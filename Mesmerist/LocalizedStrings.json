@@ -434,5 +434,7 @@
     { "Key": "Susceptibility.Name", "ProcessTemplates": false, "enGB": "Susceptibility" },
     { "Key": "Susceptibility.Description", "enGB": "The target of the hypnotic stare is more easily read and influenced (approximated as a Perception penalty)." },
     { "Key": "GiftOfWill.Name", "ProcessTemplates": false, "enGB": "Gift of Will" },
-    { "Key": "GiftOfWill.Description", "enGB": "For 1 minute per mesmerist level, the subject gains a competence bonus on Will saving throws (scaling with mesmerist level)." }
+    { "Key": "GiftOfWill.Description", "enGB": "For 1 minute per mesmerist level, the subject gains a competence bonus on Will saving throws (scaling with mesmerist level)." },
+    { "Key": "UmbralShield.Name", "ProcessTemplates": false, "enGB": "Umbral Shield" },
+    { "Key": "UmbralShield.Description", "enGB": "For 1 minute per mesmerist level, the subject is immune to the dazzled condition and ignores penalties from bright light." }
 ]
