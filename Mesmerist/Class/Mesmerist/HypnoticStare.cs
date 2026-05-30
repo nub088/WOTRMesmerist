@@ -96,6 +96,9 @@ namespace Mesmerist.Class.Mesmerist.Mesmerist
                    .Conditional(
                                ConditionsBuilder.New().CasterHasFact(Guids.Timidity),
                                ifTrue: ActionsBuilder.New().ApplyBuffPermanent(Guids.TimidityBuff, true, false))
+                   .Conditional(
+                               ConditionsBuilder.New().CasterHasFact(Guids.Unaided),
+                               ifTrue: ActionsBuilder.New().ApplyBuffPermanent(Guids.UnaidedBuff, true, false))
                    .ApplyBuffPermanent(hypnoticStareBuff, true)
                    .Add<ContextActionApplyBuffRanks>(c =>
                    {

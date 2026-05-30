@@ -422,5 +422,7 @@
     { "Key": "ShadowSplinter.Name", "ProcessTemplates": false, "enGB": "Shadow Splinter" },
     { "Key": "ShadowSplinter.Description", "enGB": "For 1 minute per mesmerist level, the subject gains DR 3/— against physical damage as illusory shadows absorb part of each blow." },
     { "Key": "SpectralSmoke.Name", "ProcessTemplates": false, "enGB": "Spectral Smoke" },
-    { "Key": "SpectralSmoke.Description", "enGB": "For 1 minute per mesmerist level, illusory smoke wreaths the subject, granting concealment (20% miss chance)." }
+    { "Key": "SpectralSmoke.Description", "enGB": "For 1 minute per mesmerist level, illusory smoke wreaths the subject, granting concealment (20% miss chance)." },
+    { "Key": "Unaided.Name", "ProcessTemplates": false, "enGB": "Unaided" },
+    { "Key": "Unaided.Description", "enGB": "The target of the hypnotic stare cannot grant or receive flanking bonuses." }
 ]

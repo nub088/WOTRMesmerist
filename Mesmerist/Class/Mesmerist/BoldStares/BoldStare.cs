@@ -22,7 +22,8 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
             SappedMagic.Configure();
             Sluggishness.Configure();
             Timidity.Configure();
-            Manifold.Configure(); 
+            Manifold.Configure();
+            Unaided.Configure();
 
             FeatureSelectionConfigurator.New(FeatName, Guids.BoldStareSelection)
                 .SetDisplayName(DisplayName)
@@ -31,7 +32,8 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetIsClassFeature()
                 .AddToAllFeatures([Guids.Disorientation, Guids.Disquiet, Guids.Distracted,
                 Guids.Infiltration, Guids.Lethality, Guids.Nightmare,
-                Guids.SappedMagic, Guids.Sluggishness, Guids.Timidity, Guids.PsychicInception])
+                Guids.SappedMagic, Guids.Sluggishness, Guids.Timidity, Guids.PsychicInception,
+                Guids.Unaided])
                 .Configure();
         }
     }
