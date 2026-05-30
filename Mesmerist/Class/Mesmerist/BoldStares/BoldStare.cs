@@ -24,6 +24,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
             Timidity.Configure();
             Manifold.Configure();
             Unaided.Configure();
+            Allure.Configure();
 
             FeatureSelectionConfigurator.New(FeatName, Guids.BoldStareSelection)
                 .SetDisplayName(DisplayName)
@@ -33,7 +34,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .AddToAllFeatures([Guids.Disorientation, Guids.Disquiet, Guids.Distracted,
                 Guids.Infiltration, Guids.Lethality, Guids.Nightmare,
                 Guids.SappedMagic, Guids.Sluggishness, Guids.Timidity, Guids.PsychicInception,
-                Guids.Unaided])
+                Guids.Unaided, Guids.Allure])
                 .Configure();
         }
     }
