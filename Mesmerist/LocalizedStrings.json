@@ -430,5 +430,7 @@
     { "Key": "Sensed.Name", "ProcessTemplates": false, "enGB": "Sensed" },
     { "Key": "Sensed.Description", "enGB": "The hypnotic stare penalty also applies to the target's Stealth checks." },
     { "Key": "Oscillation.Name", "ProcessTemplates": false, "enGB": "Oscillation" },
-    { "Key": "Oscillation.Description", "enGB": "The target of the hypnotic stare has trouble focusing on distant foes (approximated as an attack-roll penalty)." }
+    { "Key": "Oscillation.Description", "enGB": "The target of the hypnotic stare has trouble focusing on distant foes (approximated as an attack-roll penalty)." },
+    { "Key": "Susceptibility.Name", "ProcessTemplates": false, "enGB": "Susceptibility" },
+    { "Key": "Susceptibility.Description", "enGB": "The target of the hypnotic stare is more easily read and influenced (approximated as a Perception penalty)." }
 ]
