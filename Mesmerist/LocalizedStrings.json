@@ -446,5 +446,7 @@
     { "Key": "Misdirection.Name", "ProcessTemplates": false, "enGB": "Misdirection" },
     { "Key": "Misdirection.Description", "enGB": "The mesmerist misdirects an attacker, leaving it open. (Effect not yet implemented — experimental.)" },
     { "Key": "CursedSanction.Name", "ProcessTemplates": false, "enGB": "Cursed Sanction" },
-    { "Key": "CursedSanction.Description", "enGB": "When the subject is attacked, the attacker is cursed, taking a -4 penalty on attack rolls and saving throws for 1 minute per mesmerist level. (Reactive trigger experimental.)" }
+    { "Key": "CursedSanction.Description", "enGB": "When the subject is attacked, the attacker is cursed, taking a -4 penalty on attack rolls and saving throws for 1 minute per mesmerist level. (Reactive trigger experimental.)" },
+    { "Key": "VisionOfBlood.Name", "ProcessTemplates": false, "enGB": "Vision of Blood" },
+    { "Key": "VisionOfBlood.Description", "enGB": "An enemy that attacks the subject is wracked by a horrific vision and must succeed at a Will save or be stunned for 1 round. (Reactive trigger experimental.)" }
 ]
