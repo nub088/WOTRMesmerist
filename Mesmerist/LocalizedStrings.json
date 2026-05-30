@@ -418,5 +418,7 @@
     { "Key": "AstoundingAvoidance.Name", "ProcessTemplates": false, "enGB": "Astounding Avoidance" },
     { "Key": "AstoundingAvoidance.Description", "enGB": "For 1 minute per mesmerist level, the subject gains improved evasion: it takes no damage on a successful Reflex save against an effect that allows a save for half, and half damage on a failed save." },
     { "Key": "ReflectFear.Name", "ProcessTemplates": false, "enGB": "Reflect Fear" },
-    { "Key": "ReflectFear.Description", "enGB": "For 1 minute per mesmerist level, the subject is immune to fear effects." }
+    { "Key": "ReflectFear.Description", "enGB": "For 1 minute per mesmerist level, the subject is immune to fear effects." },
+    { "Key": "ShadowSplinter.Name", "ProcessTemplates": false, "enGB": "Shadow Splinter" },
+    { "Key": "ShadowSplinter.Description", "enGB": "For 1 minute per mesmerist level, the subject gains DR 3/— against physical damage as illusory shadows absorb part of each blow." }
 ]
