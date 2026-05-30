@@ -36,9 +36,10 @@ namespace Mesmerist.Utils
                 .SetCanTargetFriends(true)
                 .SetCanTargetEnemies(false)
                 .SetRange(AbilityRange.Touch)
-                .AddAbilityTargetHasFact(inverted: true, fromCaster: true, checkedFacts: [Guids.FalseFlankerBuff, Guids.MeekFacadeBuff, Guids.MesmericPantomimeBuff, Guids.MesmericMirrorBuff, 
+                .AddAbilityTargetHasFact(inverted: true, fromCaster: true, checkedFacts: [Guids.FalseFlankerBuff, Guids.MeekFacadeBuff, Guids.MesmericPantomimeBuff, Guids.MesmericMirrorBuff,
                     Guids.PsychosomaticSurgeBuff, Guids.VoiceOfReasonBuff, Guids.SeeInDarknessBuff, Guids.UnwittingMessangerBuff, Guids.FearsomeGuiseBuff, Guids.SlipBondsBuff,
-                    Guids.VanishArrowBuff, Guids.FreeInBodyBuff, Guids.ShadowBlendBuff, Guids.ConcealingVeilBuff, Guids.ForcedHopeBuff, Guids.LinkedReactionBuff])
+                    Guids.VanishArrowBuff, Guids.FreeInBodyBuff, Guids.ShadowBlendBuff, Guids.ConcealingVeilBuff, Guids.ForcedHopeBuff, Guids.LinkedReactionBuff,
+                    Guids.FleetInShadowsBuff])
                 .AddAbilityCasterHasFacts(new() { GUID_FEAT })
                 .AddAbilityShowIfCasterHasFact(unitFact: GUID_FEAT)
                 .SetNotOffensive(true)
@@ -78,7 +79,8 @@ namespace Mesmerist.Utils
                 .SetRange(AbilityRange.Touch)
                 .AddAbilityTargetHasFact(inverted: true, fromCaster: true, checkedFacts: [Guids.FalseFlankerBuff, Guids.MeekFacadeBuff, Guids.MesmericPantomimeBuff, Guids.MesmericMirrorBuff,
                     Guids.PsychosomaticSurgeBuff, Guids.VoiceOfReasonBuff, Guids.SeeInDarknessBuff, Guids.UnwittingMessangerBuff, Guids.FearsomeGuiseBuff, Guids.SlipBondsBuff,
-                    Guids.VanishArrowBuff, Guids.FreeInBody, Guids.ShadowBlendBuff, Guids.ConcealingVeilBuff, Guids.ForcedHopeBuff, Guids.LinkedReactionBuff])
+                    Guids.VanishArrowBuff, Guids.FreeInBody, Guids.ShadowBlendBuff, Guids.ConcealingVeilBuff, Guids.ForcedHopeBuff, Guids.LinkedReactionBuff,
+                    Guids.FleetInShadowsBuff])
                 .AddAbilityCasterHasFacts(new() { GUID_FEAT })
                 .AddAbilityShowIfCasterHasFact(unitFact: GUID_FEAT)
                 .SetNotOffensive(true)

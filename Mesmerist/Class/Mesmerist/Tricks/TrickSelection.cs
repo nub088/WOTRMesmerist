@@ -11,8 +11,10 @@ namespace Mesmerist.Class.Mesmerist.Tricks
         private static readonly string Description = "MesmeristTrick.Description";
         public static void Configure()
         {
+            AstoundingAvoidance.Configure();
             ConcealingVeil.Configure();
             FalseFlanker.Configure();
+            FleetInShadows.Configure();
             FearsomeGuise.Configure();
             ForcedHope.Configure();
             FreeInBody.Configure();
@@ -35,7 +37,7 @@ namespace Mesmerist.Class.Mesmerist.Tricks
                 .SetIsClassFeature()
                 .AddToAllFeatures([Guids.FalseFlanker, Guids.MeekFacade, Guids.MesmericPantomime, Guids.MesmericMirror, Guids.PsychosomaticSurge, Guids.VoiceOfReason,
                 Guids.SeeInDarkness, Guids.UnwittingMessanger, Guids.FearsomeGuise, Guids.SlipBonds, Guids.VanishArrow, Guids.FreeInBody, Guids.ShadowBlend, Guids.ConcealingVeil,
-                Guids.ForcedHope, Guids.LinkedReaction])
+                Guids.ForcedHope, Guids.LinkedReaction, Guids.FleetInShadows])
                 /*.AddToAllFeatures([Guids.AstoundingAvoidance, Guids.CompelAlacrity, Guids.FalseFlanker,
                  Guids.FleetInShadows, Guids.LevitationBuffer,
                 Guids.LinkedReaction, MesmericMirror,

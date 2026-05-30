@@ -412,5 +412,7 @@
     {
         "Key": "LinkedReaction.Description",
         "enGB": "The subject gains a morale bonus to initiative rolls equal to your charisma modifier."
-    }
+    },
+    { "Key": "FleetInShadows.Name", "ProcessTemplates": false, "enGB": "Fleet in Shadows" },
+    { "Key": "FleetInShadows.Description", "enGB": "The subject's base speed increases by 30 feet for 1 minute per mesmerist level." }
 ]
