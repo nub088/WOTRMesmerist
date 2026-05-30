@@ -154,7 +154,19 @@ scaling onto a stare buff, plus a `.Conditional` branch in `HypnoticStare.cs`.
   distance-gated concealment (Oscillation). These will be best-effort; if the required component
   can't be confirmed from the BlueprintCore/game API, the feature is stubbed with a TODO and
   flagged for the user rather than guessed wildly.
-- **Stripping Layer 3:** per §2.6, Layer 3 features are isolated. To remove them, comment out the
-  single `LAYER 3` region in `TrickSelection.cs`/`BoldStare.cs` and their grouped lines in the
-  `AddToAllFeatures` lists; the `#region Layer3Experimental` GUIDs and per-feature files can then
-  be deleted. Layer 1/2 is unaffected.
+- **Stripping experimental features — two methods (verified against the built code):**
+  - **Deactivate (safe, keeps compiling — recommended):** comment out the
+    `=== EXPERIMENTAL ... ===` `Configure()` block AND the grouped `// EXPERIMENTAL` lines in the
+    `AddToAllFeatures([...])` list, in BOTH `TrickSelection.cs` and `BoldStare.cs`. That removes the
+    features from the game. Everything still compiles: the per-feature files, GUIDs, the
+    `CommonTrickHelpers.cs` exclusion-array entries, and the `HypnoticStare.cs` dispatch branches
+    for Oscillation/Susceptibility all remain harmless (their `CasterHasFact` conditions simply
+    never match because the features are no longer granted).
+  - **Full delete (more cleanup):** to also delete the per-feature `.cs` files and the
+    `#region Layer3Experimental` GUIDs, you MUST additionally remove (a) the matching
+    `Guids.<Name>Buff` entries from both `checkedFacts` arrays in `CommonTrickHelpers.cs`, and
+    (b) for the two experimental stares, their `.Conditional(...)` branches in `HypnoticStare.cs`.
+    Otherwise those files reference deleted GUID constants and won't compile. Note: the
+    Compel Alacrity / Levitation Buffer / Misdirection / Cursed Sanction GUIDs live in the main
+    GUID region (the author pre-allocated them), not in `#region Layer3Experimental`.
+  - Layer 1/2 core features are unaffected either way.
