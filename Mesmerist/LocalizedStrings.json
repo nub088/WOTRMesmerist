@@ -428,5 +428,7 @@
     { "Key": "Allure.Name", "ProcessTemplates": false, "enGB": "Allure" },
     { "Key": "Allure.Description", "enGB": "The hypnotic stare penalty also applies to the target's initiative and Perception checks." },
     { "Key": "Sensed.Name", "ProcessTemplates": false, "enGB": "Sensed" },
-    { "Key": "Sensed.Description", "enGB": "The hypnotic stare penalty also applies to the target's Stealth checks." }
+    { "Key": "Sensed.Description", "enGB": "The hypnotic stare penalty also applies to the target's Stealth checks." },
+    { "Key": "Oscillation.Name", "ProcessTemplates": false, "enGB": "Oscillation" },
+    { "Key": "Oscillation.Description", "enGB": "The target of the hypnotic stare has trouble focusing on distant foes (approximated as an attack-roll penalty)." }
 ]
