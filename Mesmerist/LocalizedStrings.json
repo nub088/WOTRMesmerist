@@ -438,5 +438,7 @@
     { "Key": "UmbralShield.Name", "ProcessTemplates": false, "enGB": "Umbral Shield" },
     { "Key": "UmbralShield.Description", "enGB": "For 1 minute per mesmerist level, the subject is immune to the dazzled condition and ignores penalties from bright light." },
     { "Key": "FakedDeath.Name", "ProcessTemplates": false, "enGB": "Faked Death" },
-    { "Key": "FakedDeath.Description", "enGB": "For 1 minute per mesmerist level, the subject becomes invisible, appearing to have fallen." }
+    { "Key": "FakedDeath.Description", "enGB": "For 1 minute per mesmerist level, the subject becomes invisible, appearing to have fallen." },
+    { "Key": "CompelAlacrity.Name", "ProcessTemplates": false, "enGB": "Compel Alacrity" },
+    { "Key": "CompelAlacrity.Description", "enGB": "The subject moves with supernatural quickness (stand-in: +10 ft speed for 1 minute per mesmerist level)." }
 ]
