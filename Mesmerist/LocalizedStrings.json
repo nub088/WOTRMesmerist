@@ -432,5 +432,7 @@
     { "Key": "Oscillation.Name", "ProcessTemplates": false, "enGB": "Oscillation" },
     { "Key": "Oscillation.Description", "enGB": "The target of the hypnotic stare has trouble focusing on distant foes (approximated as an attack-roll penalty)." },
     { "Key": "Susceptibility.Name", "ProcessTemplates": false, "enGB": "Susceptibility" },
-    { "Key": "Susceptibility.Description", "enGB": "The target of the hypnotic stare is more easily read and influenced (approximated as a Perception penalty)." }
+    { "Key": "Susceptibility.Description", "enGB": "The target of the hypnotic stare is more easily read and influenced (approximated as a Perception penalty)." },
+    { "Key": "GiftOfWill.Name", "ProcessTemplates": false, "enGB": "Gift of Will" },
+    { "Key": "GiftOfWill.Description", "enGB": "For 1 minute per mesmerist level, the subject gains a competence bonus on Will saving throws (scaling with mesmerist level)." }
 ]
