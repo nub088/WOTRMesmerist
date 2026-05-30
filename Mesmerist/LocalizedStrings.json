@@ -442,5 +442,7 @@
     { "Key": "CompelAlacrity.Name", "ProcessTemplates": false, "enGB": "Compel Alacrity" },
     { "Key": "CompelAlacrity.Description", "enGB": "The subject moves with supernatural quickness (stand-in: +10 ft speed for 1 minute per mesmerist level)." },
     { "Key": "LevitationBuffer.Name", "ProcessTemplates": false, "enGB": "Levitation Buffer" },
-    { "Key": "LevitationBuffer.Description", "enGB": "The subject briefly lifts nearby foes off the ground. (Effect not yet implemented — experimental.)" }
+    { "Key": "LevitationBuffer.Description", "enGB": "The subject briefly lifts nearby foes off the ground. (Effect not yet implemented — experimental.)" },
+    { "Key": "Misdirection.Name", "ProcessTemplates": false, "enGB": "Misdirection" },
+    { "Key": "Misdirection.Description", "enGB": "The mesmerist misdirects an attacker, leaving it open. (Effect not yet implemented — experimental.)" }
 ]
