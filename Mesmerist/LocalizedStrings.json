@@ -436,5 +436,7 @@
     { "Key": "GiftOfWill.Name", "ProcessTemplates": false, "enGB": "Gift of Will" },
     { "Key": "GiftOfWill.Description", "enGB": "For 1 minute per mesmerist level, the subject gains a competence bonus on Will saving throws (scaling with mesmerist level)." },
     { "Key": "UmbralShield.Name", "ProcessTemplates": false, "enGB": "Umbral Shield" },
-    { "Key": "UmbralShield.Description", "enGB": "For 1 minute per mesmerist level, the subject is immune to the dazzled condition and ignores penalties from bright light." }
+    { "Key": "UmbralShield.Description", "enGB": "For 1 minute per mesmerist level, the subject is immune to the dazzled condition and ignores penalties from bright light." },
+    { "Key": "FakedDeath.Name", "ProcessTemplates": false, "enGB": "Faked Death" },
+    { "Key": "FakedDeath.Description", "enGB": "For 1 minute per mesmerist level, the subject becomes invisible, appearing to have fallen." }
 ]
