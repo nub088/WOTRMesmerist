@@ -55,6 +55,14 @@ namespace Mesmerist.Class.Mesmerist.Tricks
                 // EXPERIMENTAL (strip with the block above):
                 Guids.CompelAlacrity, Guids.LevitationBuffer, Guids.Misdirection, Guids.CursedSanction,
                 Guids.GiftOfWill, Guids.UmbralShield, Guids.VisionOfBlood, Guids.FakedDeath])
+                /*.AddToAllFeatures([Guids.AstoundingAvoidance, Guids.CompelAlacrity, Guids.FalseFlanker,
+                 Guids.FleetInShadows, Guids.LevitationBuffer,
+                Guids.LinkedReaction, MesmericMirror,
+                , Guids.Misdirection,
+                Guids.ReflectFear,  Guids.ShadowSplinter,
+                Guids.VanishArrow, //Guids.SpectralSmoke,
+                Guids.CursedSanction, Guids.FreeInBody, Guids.GoodHopeTrick,
+                Guids.ShadowBlend])*/
                 .Configure();
         }
     }
