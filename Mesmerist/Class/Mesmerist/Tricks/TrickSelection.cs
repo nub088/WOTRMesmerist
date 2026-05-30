@@ -18,6 +18,7 @@ namespace Mesmerist.Class.Mesmerist.Tricks
             FearsomeGuise.Configure();
             ForcedHope.Configure();
             FreeInBody.Configure();
+            ReflectFear.Configure();
             LinkedReaction.Configure();
             MeekFacade.Configure();
             MesmericMirror.Configure();
@@ -37,7 +38,7 @@ namespace Mesmerist.Class.Mesmerist.Tricks
                 .SetIsClassFeature()
                 .AddToAllFeatures([Guids.FalseFlanker, Guids.MeekFacade, Guids.MesmericPantomime, Guids.MesmericMirror, Guids.PsychosomaticSurge, Guids.VoiceOfReason,
                 Guids.SeeInDarkness, Guids.UnwittingMessanger, Guids.FearsomeGuise, Guids.SlipBonds, Guids.VanishArrow, Guids.FreeInBody, Guids.ShadowBlend, Guids.ConcealingVeil,
-                Guids.ForcedHope, Guids.LinkedReaction, Guids.FleetInShadows, Guids.AstoundingAvoidance])
+                Guids.ForcedHope, Guids.LinkedReaction, Guids.FleetInShadows, Guids.AstoundingAvoidance, Guids.ReflectFear])
                 /*.AddToAllFeatures([Guids.AstoundingAvoidance, Guids.CompelAlacrity, Guids.FalseFlanker,
                  Guids.FleetInShadows, Guids.LevitationBuffer,
                 Guids.LinkedReaction, MesmericMirror,

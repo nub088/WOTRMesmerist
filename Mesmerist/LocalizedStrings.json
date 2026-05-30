@@ -416,5 +416,7 @@
     { "Key": "FleetInShadows.Name", "ProcessTemplates": false, "enGB": "Fleet in Shadows" },
     { "Key": "FleetInShadows.Description", "enGB": "The subject's base speed increases by 30 feet for 1 minute per mesmerist level." },
     { "Key": "AstoundingAvoidance.Name", "ProcessTemplates": false, "enGB": "Astounding Avoidance" },
-    { "Key": "AstoundingAvoidance.Description", "enGB": "For 1 minute per mesmerist level, the subject gains improved evasion: it takes no damage on a successful Reflex save against an effect that allows a save for half, and half damage on a failed save." }
+    { "Key": "AstoundingAvoidance.Description", "enGB": "For 1 minute per mesmerist level, the subject gains improved evasion: it takes no damage on a successful Reflex save against an effect that allows a save for half, and half damage on a failed save." },
+    { "Key": "ReflectFear.Name", "ProcessTemplates": false, "enGB": "Reflect Fear" },
+    { "Key": "ReflectFear.Description", "enGB": "For 1 minute per mesmerist level, the subject is immune to fear effects." }
 ]
