@@ -35,6 +35,16 @@ own machine (see §6). Low-confidence features may need fixups or be dropped at 
 4. **Match file layout:** one class per file under `Class/Mesmerist/Tricks/` or
    `Class/Mesmerist/BoldStares/`, namespace and `Configure()` static method per his style.
 5. **Skip content with no meaning in a CRPG** rather than fake it (see §5).
+6. **Keep Layer 3 strippable.** Layer 3 (and any other Low-confidence) features must be
+   isolated so they can be removed in one move if they break the build, without touching
+   Layer 1/2 code. Concretely:
+   - Each Layer 3 feature lives in its own file, header-commented `// LAYER 3 — experimental`.
+   - All Layer 3 `Configure()` calls are grouped under a single
+     `// === LAYER 3 (experimental — comment out this block to strip) ===` region in the
+     relevant selection files, and their `Guids.<Name>` entries in the `AddToAllFeatures([...])`
+     lists are grouped on their own clearly-commented lines.
+   - Their GUID constants sit in a dedicated `#region Layer3Experimental` block in `Guids.cs`.
+   This mirrors the author's existing habit of commenting out unfinished blocks.
 
 ---
 
@@ -144,3 +154,7 @@ scaling onto a stare buff, plus a `.Conditional` branch in `HypnoticStare.cs`.
   distance-gated concealment (Oscillation). These will be best-effort; if the required component
   can't be confirmed from the BlueprintCore/game API, the feature is stubbed with a TODO and
   flagged for the user rather than guessed wildly.
+- **Stripping Layer 3:** per §2.6, Layer 3 features are isolated. To remove them, comment out the
+  single `LAYER 3` region in `TrickSelection.cs`/`BoldStare.cs` and their grouped lines in the
+  `AddToAllFeatures` lists; the `#region Layer3Experimental` GUIDs and per-feature files can then
+  be deleted. Layer 1/2 is unaffected.
