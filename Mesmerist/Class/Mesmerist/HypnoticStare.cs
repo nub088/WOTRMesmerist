@@ -42,7 +42,7 @@ namespace Mesmerist.Class.Mesmerist.Mesmerist
             BlueprintBuff hypnoticStareBuff = BuffConfigurator.New(FeatName + "Buff", Guids.HypnoticStareBuff)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.Eyebite.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("HypnoticStare", AbilityRefs.Eyebite.Reference.Get().Icon))
                 .AddSpellDescriptorComponent(SpellDescriptor.MindAffecting)
                 .AddUniqueBuff()
                 .SetFxOnStart("8de64fbe047abc243a9b4715f643739f")
@@ -54,7 +54,7 @@ namespace Mesmerist.Class.Mesmerist.Mesmerist
             BlueprintAbility hypnoticStareAbility = AbilityConfigurator.New(FeatName + "Ability", Guids.HypnoticStareAbility)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.EyebiteAbility.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("HypnoticStare", AbilityRefs.EyebiteAbility.Reference.Get().Icon))
                 .SetRange(AbilityRange.Close)
                 .SetActionType(CommandType.Swift)
                 .SetCanTargetSelf(false)
@@ -129,7 +129,7 @@ namespace Mesmerist.Class.Mesmerist.Mesmerist
                 .AddFacts(new() { hypnoticStareAbility })
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.EyebiteAbility.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("HypnoticStare", AbilityRefs.EyebiteAbility.Reference.Get().Icon))
                 .SetIsClassFeature()
                 .SetReapplyOnLevelUp(false)
                 .Configure();
@@ -137,14 +137,14 @@ namespace Mesmerist.Class.Mesmerist.Mesmerist
             FeatureConfigurator.New(FeatName + "Upgrade", Guids.HypnoticStareUpgrade)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.EyebiteAbility.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("HypnoticStare", AbilityRefs.EyebiteAbility.Reference.Get().Icon))
                 .SetIsClassFeature()
                 .Configure();
 
             FeatureConfigurator.New(FeatName + "PiercingGaze", Guids.HypnoticStarePiercingGaze)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.EyebiteAbility.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("HypnoticStare", AbilityRefs.EyebiteAbility.Reference.Get().Icon))
                 .SetIsClassFeature()
                 .Configure();
         }

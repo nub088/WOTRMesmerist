@@ -21,7 +21,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .AddUniqueBuff()
-                .SetIcon(BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Sluggishness", BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon))
                 .AddContextStatBonus(StatType.SaveReflex, ContextValues.Rank(), ModifierDescriptor.UntypedStackable, 2, -1)
                 .AddBuffMovementSpeed(descriptor: ModifierDescriptor.UntypedStackable, value: -5, cappedMinimum: true, minimumCap: 5)
                 .AddContextRankConfig(ContextRankConfigs.CharacterLevel(AbilityRankType.Default).WithCustomProgression((7, 2), (19, 3), (20, 5)))
@@ -32,7 +32,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .SetIsClassFeature()
-                .SetIcon(AbilityRefs.TrueSeeing.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Sluggishness", AbilityRefs.TrueSeeing.Reference.Get().Icon))
                 .Configure();
 
 

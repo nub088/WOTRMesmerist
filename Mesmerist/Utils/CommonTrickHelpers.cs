@@ -19,6 +19,11 @@ namespace Mesmerist.Utils
     {
         public static void CreateTrick(string FeatName, string DisplayName, string Description, UnityEngine.Sprite icon, string GUID_FEAT, string GUID_ABILITY, string GUID_BUFF)
         {
+            // The trick's feature, ability and buff all share one image. FeatName is
+            // also the PNG filename, so custom art is picked up here for every trick at
+            // once; GetOr falls back to the borrowed icon when a file is missing.
+            icon = IconLoader.GetOr(FeatName, icon);
+
             BuffConfigurator.New(FeatName + "Buff", GUID_BUFF)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
@@ -62,6 +67,11 @@ namespace Mesmerist.Utils
 
         public static void CreateMasterfulTrick(string FeatName, string DisplayName, string Description, UnityEngine.Sprite icon, string GUID_FEAT, string GUID_ABILITY, string GUID_BUFF)
         {
+            // The trick's feature, ability and buff all share one image. FeatName is
+            // also the PNG filename, so custom art is picked up here for every trick at
+            // once; GetOr falls back to the borrowed icon when a file is missing.
+            icon = IconLoader.GetOr(FeatName, icon);
+
             BuffConfigurator.New(FeatName + "Buff", GUID_BUFF)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
@@ -81,7 +91,7 @@ namespace Mesmerist.Utils
                 .SetRange(AbilityRange.Touch)
                 .AddAbilityTargetHasFact(inverted: true, fromCaster: true, checkedFacts: [Guids.FalseFlankerBuff, Guids.MeekFacadeBuff, Guids.MesmericPantomimeBuff, Guids.MesmericMirrorBuff,
                     Guids.PsychosomaticSurgeBuff, Guids.VoiceOfReasonBuff, Guids.SeeInDarknessBuff, Guids.UnwittingMessangerBuff, Guids.FearsomeGuiseBuff, Guids.SlipBondsBuff,
-                    Guids.VanishArrowBuff, Guids.FreeInBody, Guids.ShadowBlendBuff, Guids.ConcealingVeilBuff, Guids.ForcedHopeBuff, Guids.LinkedReactionBuff,
+                    Guids.VanishArrowBuff, Guids.FreeInBodyBuff, Guids.ShadowBlendBuff, Guids.ConcealingVeilBuff, Guids.ForcedHopeBuff, Guids.LinkedReactionBuff,
                     Guids.FleetInShadowsBuff, Guids.AstoundingAvoidanceBuff, Guids.ReflectFearBuff, Guids.ShadowSplinterBuff, Guids.SpectralSmokeBuff,
                     Guids.GiftOfWillBuff, Guids.UmbralShieldBuff, Guids.FakedDeathBuff, Guids.CompelAlacrityBuff, Guids.LevitationBufferBuff,
                     Guids.MisdirectionBuff, Guids.CursedSanctionBuff, Guids.VisionOfBloodBuff])

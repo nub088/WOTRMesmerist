@@ -22,7 +22,7 @@ namespace Mesmerist.Class.Mesmerist.Features
             BuffConfigurator.New(FeatName + "Buff", Guids.DemoralizingStareBuff)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.PersuasionUseAbility.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("DemoralizingStare", AbilityRefs.PersuasionUseAbility.Reference.Get().Icon))
                 .AddComponent<AddCombatStare>(c => {
                     c.SavingThrow = SavingThrowType.Will;
                     c.CombatStareDebuff = BuffRefs.Shaken.Reference.Get();
@@ -33,7 +33,7 @@ namespace Mesmerist.Class.Mesmerist.Features
             ActivatableAbilityConfigurator.New(FeatName + "ActivatableAbility", Guids.DemoralizingStareActivatableAbility)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.PersuasionUseAbility.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("DemoralizingStare", AbilityRefs.PersuasionUseAbility.Reference.Get().Icon))
                 .SetGroup((ActivatableAbilityGroup)(ExtentedActivatableAbilityGroup)1818)
                 .SetBuff(Guids.DemoralizingStareBuff)
                 .SetDeactivateImmediately()

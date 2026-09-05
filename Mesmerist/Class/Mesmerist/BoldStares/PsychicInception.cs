@@ -32,7 +32,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDescription(Description)
                 .AddUniqueBuff()
                 .AddComponent<AddPsychicInception>()
-                .SetIcon(BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("PsychicInception", BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon))
                 .Configure();
 
             /*.AddAbilityTargetHasNoFactUnless(

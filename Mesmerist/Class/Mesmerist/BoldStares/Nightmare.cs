@@ -19,7 +19,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .AddUniqueBuff()
-                .SetIcon(BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Nightmare", BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon))
                 .AddModifyD20(takeBest: false, rule: Kingmaker.Designers.Mechanics.Facts.RuleType.SavingThrow, 
                 rollsAmount: 1, spellDescriptor: SpellDescriptor.Fear, 
                 savingThrowType: Kingmaker.RuleSystem.Rules.FlaggedSavingThrowType.Will, specificDescriptor: true)
@@ -30,7 +30,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .SetIsClassFeature()
-                .SetIcon(AbilityRefs.TrueSeeing.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Nightmare", AbilityRefs.TrueSeeing.Reference.Get().Icon))
                 .Configure();
 
 

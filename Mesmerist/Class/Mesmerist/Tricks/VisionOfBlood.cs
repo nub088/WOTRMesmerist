@@ -1,21 +1,24 @@
+﻿using BlueprintCore.Actions.Builder;
+using BlueprintCore.Actions.Builder.ContextEx;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
 using BlueprintCore.Utils.Types;
+using Kingmaker.EntitySystem.Stats;
+using Kingmaker.UnitLogic.Mechanics;
 using Mesmerist.Utils;
 
 namespace Mesmerist.Class.Mesmerist.Tricks
 {
-    // LAYER 3 — experimental (reactive trigger is a TODO)
     internal class VisionOfBlood
     {
+        // Tabletop: when the subject is attacked, the attacker sees a horrifying vision and
+        // must make a Will save or be stunned for 1 round. The trick is spent when it fires.
         public static void Configure()
         {
-            // CANDIDATE: reuse the game's Stunned buff via AddFacts; if a dedicated stun buff
-            // ref isn't available, clone an existing stun effect. // TODO(verify-on-build)
             BuffConfigurator.New("VisionOfBloodStun", Guids.VisionOfBloodDebuff)
                 .SetDisplayName("VisionOfBlood.Name")
                 .SetDescription("VisionOfBlood.Description")
-                .SetIcon(AbilityRefs.Eyebite.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("VisionOfBlood", AbilityRefs.Eyebite.Reference.Get().Icon))
                 .AddFacts(new() { BuffRefs.Stunned.Reference.Get() })
                 .Configure();
 
@@ -27,10 +30,23 @@ namespace Mesmerist.Class.Mesmerist.Tricks
                                                     Guids.VisionOfBloodAbility,
                                                     Guids.VisionOfBloodBuff);
 
-            // TODO(verify-on-build): wire so that when the subject is attacked, the attacker
-            // makes a Will save (DC = standard mesmerist DC) or gains Guids.VisionOfBloodDebuff
-            // (stunned) for 1 round. Needs a "target attacked" trigger. Buff currently inert.
+            // AddContextCalculateAbilityParamsBasedOnClass gives the save a real DC
+            // (10 + 1/2 mesmerist level + Charisma) rather than defaulting to zero, since the
+            // save is rolled from the buff's context rather than the implanting ability's.
             BuffConfigurator.For(Guids.VisionOfBloodBuff)
+                .AddContextCalculateAbilityParamsBasedOnClass(
+                    characterClass: Guids.Mesmerist, statType: StatType.Charisma)
+                .AddTargetAttackWithWeaponTrigger(
+                    actionOnSelf: ActionsBuilder.New().RemoveSelf(),
+                    actionsOnAttacker: ActionsBuilder.New()
+                        .SavingThrow(
+                            type: SavingThrowType.Will,
+                            onResult: ActionsBuilder.New()
+                                .ConditionalSaved(
+                                    failed: ActionsBuilder.New()
+                                        .ApplyBuff(Guids.VisionOfBloodDebuff,
+                                                   ContextDuration.Fixed(1, DurationRate.Rounds)),
+                                    succeed: ActionsBuilder.New())))
                 .Configure();
         }
     }

@@ -22,7 +22,7 @@ namespace Mesmerist.Class.Mesmerist.Features
             BuffConfigurator.New(FeatName + "Buff", Guids.FatiguingStareBuff)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.TouchOfFatigueCast.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("FatiguingStare", AbilityRefs.TouchOfFatigueCast.Reference.Get().Icon))
                 .AddComponent<AddCombatStare>(c => {
                     c.SavingThrow = SavingThrowType.Fortitude;
                     c.CombatStareDebuff = BuffRefs.Fatigued.Reference.Get();
@@ -33,7 +33,7 @@ namespace Mesmerist.Class.Mesmerist.Features
             ActivatableAbilityConfigurator.New(FeatName + "ActivatableAbility", Guids.FatiguingStareActivatableAbility)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.TouchOfFatigueCast.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("FatiguingStare", AbilityRefs.TouchOfFatigueCast.Reference.Get().Icon))
                 .SetGroup((ActivatableAbilityGroup)(ExtentedActivatableAbilityGroup)1818)
                 .SetBuff(Guids.FatiguingStareBuff)
                 .SetDeactivateImmediately()

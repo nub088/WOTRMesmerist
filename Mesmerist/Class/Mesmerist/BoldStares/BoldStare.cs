@@ -1,5 +1,7 @@
 ﻿using BlueprintCore.Blueprints.References;
 using Mesmerist.Utils;
+using BlueprintCore.Utils;
+using Kingmaker.Blueprints;
 using BlueprintCore.Blueprints.CustomConfigurators.Classes.Selection;
 
 namespace Mesmerist.Class.Mesmerist.BoldStares
@@ -9,6 +11,18 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
         private static readonly string FeatName = "BoldStare";
         internal const string DisplayName = "BoldStare.Name";
         private static readonly string Description = "BoldStare.Description";
+
+        /// <summary>
+        /// Every bold stare improvement. Shared with ExtraBoldStare so the feat and the class
+        /// feature cannot offer different lists.
+        /// </summary>
+        internal static readonly Blueprint<BlueprintFeatureReference>[] All = [
+            Guids.Disorientation, Guids.Disquiet, Guids.Distracted,
+            Guids.Infiltration, Guids.Lethality, Guids.Nightmare,
+            Guids.SappedMagic, Guids.Sluggishness, Guids.Timidity, Guids.PsychicInception,
+            Guids.Unaided, Guids.Allure, Guids.Sensed,
+            // EXPERIMENTAL (strip with the block above):
+            Guids.Oscillation, Guids.Susceptibility];
 
         public static void Configure()
         {
@@ -35,14 +49,9 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
             FeatureSelectionConfigurator.New(FeatName, Guids.BoldStareSelection)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.Blindness.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("BoldStare", AbilityRefs.Blindness.Reference.Get().Icon))
                 .SetIsClassFeature()
-                .AddToAllFeatures([Guids.Disorientation, Guids.Disquiet, Guids.Distracted,
-                Guids.Infiltration, Guids.Lethality, Guids.Nightmare,
-                Guids.SappedMagic, Guids.Sluggishness, Guids.Timidity, Guids.PsychicInception,
-                Guids.Unaided, Guids.Allure, Guids.Sensed,
-                // EXPERIMENTAL (strip with the block above):
-                Guids.Oscillation, Guids.Susceptibility])
+                .AddToAllFeatures(All)
                 .Configure();
         }
     }

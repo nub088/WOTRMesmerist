@@ -1,4 +1,5 @@
 ﻿using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+using BlueprintCore.Blueprints.References;
 using Mesmerist.Utils;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.UnitLogic.ActivatableAbilities;
@@ -17,6 +18,7 @@ namespace Mesmerist.Class.Mesmerist.Features
             FeatureConfigurator.New(FeatName, Guids.CompoundedPain, [FeatureGroup.CombatFeat, FeatureGroup.Feat])
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
+                .SetIcon(IconLoader.GetOr("CompoundedPain", AbilityRefs.EyebiteAbility.Reference.Get().Icon))
                 .AddIncreaseActivatableAbilityGroupSize((ActivatableAbilityGroup)(ExtentedActivatableAbilityGroup)1818)
                 .SetIsClassFeature(true)
                 .SetReapplyOnLevelUp(false)

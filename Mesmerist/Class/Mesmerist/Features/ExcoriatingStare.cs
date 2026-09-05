@@ -22,7 +22,7 @@ namespace Mesmerist.Class.Mesmerist.Features
             BuffConfigurator.New(FeatName + "Buff", Guids.ExcoriatingStareBuff)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(BuffRefs.Sickened.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("ExcoriatingStare", BuffRefs.Sickened.Reference.Get().Icon))
                 .AddContextCalculateAbilityParamsBasedOnClass(Guids.Mesmerist, statType: StatType.Charisma)
                 .AddComponent<AddCombatStare>(c => {
                     c.SavingThrow = SavingThrowType.Will;
@@ -33,7 +33,7 @@ namespace Mesmerist.Class.Mesmerist.Features
             ActivatableAbilityConfigurator.New(FeatName + "ActivatableAbility", Guids.ExcoriatingStareActivatableAbility)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(BuffRefs.Sickened.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("ExcoriatingStare", BuffRefs.Sickened.Reference.Get().Icon))
                 .SetGroup((ActivatableAbilityGroup)(ExtentedActivatableAbilityGroup)1818)
                 .SetBuff(Guids.ExcoriatingStareBuff)
                 .SetDeactivateImmediately()

@@ -22,7 +22,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .AddUniqueBuff()
-                .SetIcon(BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Timidity", BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon))
                 .AddContextStatBonus(StatType.AdditionalDamage, ContextValues.Rank(), ModifierDescriptor.UntypedStackable, 2, -1)
                 .AddContextRankConfig(ContextRankConfigs.CharacterLevel(AbilityRankType.Default).WithCustomProgression((7, 2), (19, 3), (20, 5)))
                 .Configure(); 
@@ -32,7 +32,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .SetIsClassFeature()
-                .SetIcon(AbilityRefs.TrueSeeing.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Timidity", AbilityRefs.TrueSeeing.Reference.Get().Icon))
                 .Configure();
         }
     }

@@ -1,4 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" InitialTargets="GenerateCustomPropsFile">
+	<PropertyGroup>
+		<SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)..\</SolutionDir>
+	</PropertyGroup>
 	<Import Project="$(SolutionDir)GamePath.props" Condition="Exists('$(SolutionDir)GamePath.props')" />
 
 	<PropertyGroup>
@@ -26,17 +29,16 @@
 	<ItemGroup>
 		<None Include="Info.json" CopyToOutputDirectory="PreserveNewest" />
 		<None Include="LocalizedStrings.json" CopyToOutputDirectory="PreserveNewest" />
+		<!-- Icon art is read from disk at runtime by IconLoader, so it ships next to the dll
+		     rather than being embedded. Deploy's file rules already carry non-dll files across. -->
+		<None Include="Assets\**\*.png" CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
-	<Target Name="ILRepack" AfterTargets="Build">
-		<ItemGroup>
-			<InputAssemblies Include="BlueprintCore.dll" />
-			<InputAssemblies Include="$(AssemblyName).dll" />
-			<OutputAssembly Include="$(AssemblyName).dll" />
-		</ItemGroup>
-		<Message Text="Merging: @(InputAssemblies) into @(OutputAssembly)" Importance="High" />
-		<ILRepack OutputType="Dll" MainAssembly="@(OutputAssembly)" OutputAssembly="@(OutputAssembly)" InputAssemblies="@(InputAssemblies)" WorkingDirectory="$(OutputPath)" />
-	</Target>
-	<Target Name="Deploy" AfterTargets="ILRepack">
+	<Target Name="Deploy" AfterTargets="MergeBlueprintCore">
+		<PropertyGroup>
+			<!-- Info.json is what the mod manager actually reads, so the archive is named from it. -->
+			<ModVersion>$([System.Text.RegularExpressions.Regex]::Match($([System.IO.File]::ReadAllText('$(MSBuildProjectDirectory)/Info.json')), '"Version"\s*:\s*"([^"]*)"').Groups[1].Value)</ModVersion>
+			<PackageStageDir>$(MSBuildProjectDirectory)/obj/package/</PackageStageDir>
+		</PropertyGroup>
 		<ItemGroup>
 			<Files Include="$(TargetDir)\**\*.*" />
 			<Files Remove="$(TargetDir)\**\*.dll" />
@@ -50,18 +52,23 @@
 
 		<Copy SourceFiles="@(Files)" DestinationFiles="@(Files->'$(WrathInstallDir)\Mods\$(AssemblyName)\%(RecursiveDir)%(Filename)%(Extension)')" />
 		<Delete Files="@(ToDelete)" />
-		<ZipDirectory SourceDirectory="$(MSBuildProjectDirectory)\$(OutputPath)" DestinationFile="$(MSBuildProjectDirectory)\$(OutputPath)\..\$(AssemblyName)-$(Version).zip" Overwrite="true" />
+
+		<!-- Stage under a folder named after the mod: Unity Mod Manager expects the archive
+		     to contain Mesmerist\Info.json, not Info.json at the archive root. -->
+		<RemoveDir Directories="$(PackageStageDir)" />
+		<Copy SourceFiles="@(Files)" DestinationFiles="@(Files->'$(PackageStageDir)$(AssemblyName)\%(RecursiveDir)%(Filename)%(Extension)')" />
+		<ZipDirectory SourceDirectory="$(PackageStageDir)" DestinationFile="$(MSBuildProjectDirectory)\$(OutputPath)\..\$(AssemblyName)-$(ModVersion).zip" Overwrite="true" />
 	</Target>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
 		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" IncludeAssets="build; contentfiles" Version="0.4.2" PrivateAssets="all" />
-		<PackageReference Include="ILRepack.MSBuild.Task" Version="2.*" />
+		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.*" PrivateAssets="all" />
 		<PackageReference Include="WW-Blueprint-Core" Version="*-*" />
 		<PackageReference Include="MicroUtils.HarmonyAnalyzers" IncludeAssets="runtime; build; native; contentfiles; analyzers" Version="*-*" PrivateAssets="all" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="TabletopTweaks-Core">
-	    <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Mods\TabletopTweaks-Core\TabletopTweaks-Core.dll</HintPath>
+	    <HintPath>$(WrathInstallDir)\Mods\TabletopTweaks-Core\TabletopTweaks-Core.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 	<Target Name="GenerateCustomPropsFile" Condition="$(WrathInstallDir) == ''">

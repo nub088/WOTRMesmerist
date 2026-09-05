@@ -21,7 +21,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .AddUniqueBuff()
-                .SetIcon(BuffRefs.SappingAssaultIBuff.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("SappedMagic", BuffRefs.SappingAssaultIBuff.Reference.Get().Icon))
                 .AddIncreaseAllSpellsDC(descriptor: ModifierDescriptor.UntypedStackable, spellsOnly: false, value: ContextValues.Rank())
                 .AddSpellResistance(true, value: ContextValues.Rank())
                 .AddContextRankConfig(ContextRankConfigs.CharacterLevel(AbilityRankType.Default).WithCustomProgression((7, -2), (19, -3), (20, -5)))
@@ -32,7 +32,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .SetIsClassFeature()
-                .SetIcon(AbilityRefs.TrueSeeing.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("SappedMagic", AbilityRefs.TrueSeeing.Reference.Get().Icon))
                 .Configure();
 
 

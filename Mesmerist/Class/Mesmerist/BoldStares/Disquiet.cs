@@ -18,7 +18,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .AddUniqueBuff()
-                .SetIcon(BuffRefs.FearBuff.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Disquiet", BuffRefs.FearBuff.Reference.Get().Icon))
                 .AddCondition(Kingmaker.UnitLogic.UnitCondition.Shaken)
                 .Configure();
 
@@ -26,7 +26,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
             FeatureConfigurator.New(FeatName, Guids.Disquiet)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.TrueSeeing.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Disquiet", AbilityRefs.TrueSeeing.Reference.Get().Icon))
                 .SetIsClassFeature()
                 .Configure();
 

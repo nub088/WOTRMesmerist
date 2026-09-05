@@ -1,4 +1,4 @@
-using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+﻿using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
 using BlueprintCore.Utils.Types;
@@ -21,7 +21,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .AddUniqueBuff()
-                .SetIcon(BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Allure", BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon))
                 .AddContextStatBonus(StatType.Initiative, ContextValues.Rank(), ModifierDescriptor.UntypedStackable, 2, -1)
                 .AddContextStatBonus(StatType.SkillPerception, ContextValues.Rank(), ModifierDescriptor.UntypedStackable, 2, -1)
                 .AddContextRankConfig(ContextRankConfigs.CharacterLevel(AbilityRankType.Default).WithCustomProgression((7, 2), (19, 3), (20, 5)))
@@ -30,7 +30,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
             FeatureConfigurator.New(FeatName, Guids.Allure)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.TrueSeeing.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Allure", AbilityRefs.TrueSeeing.Reference.Get().Icon))
                 .SetIsClassFeature()
                 .Configure();
         }

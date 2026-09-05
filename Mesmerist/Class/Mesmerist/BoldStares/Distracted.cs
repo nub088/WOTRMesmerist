@@ -20,7 +20,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .AddUniqueBuff()
-                .SetIcon(BuffRefs.DistractingShotsBuff.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Distracted", BuffRefs.DistractingShotsBuff.Reference.Get().Icon))
                 .AddConcentrationBonus(value: ContextValues.Rank())
                 .AddContextRankConfig(ContextRankConfigs.CharacterLevel(AbilityRankType.Default).WithCustomProgression((7, -2), (19, -3), (20, -5)))
                 .Configure();
@@ -30,7 +30,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .SetIsClassFeature()
-                .SetIcon(AbilityRefs.TrueSeeing.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Distracted", AbilityRefs.TrueSeeing.Reference.Get().Icon))
                 .Configure();
 
 

@@ -17,7 +17,7 @@ namespace Mesmerist.Class.Mesmerist
             FeatureConfigurator.New(FeatName, Guids.ToweringEgo)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.Guidance.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("ToweringEgo", AbilityRefs.Guidance.Reference.Get().Icon))
                 .SetIsClassFeature()
                 .AddDerivativeStatBonus(StatType.Charisma, StatType.SaveWill, ModifierDescriptor.None)
                 .AddRecalculateOnStatChange(stat: StatType.Charisma)

@@ -194,6 +194,7 @@
         internal const string LevitationBufferAbility = "cf801e5b8d59473e8bf09c3b3ddab321";
         internal const string LevitationBufferBuff = "c62ed60c31bd4c8abb96aa8bf6de0d1e";
         internal const string LevitationBufferBuffEffect = "eed47d781014457a9c0f4868537380a0";
+        internal const string LevitationBufferPushAbility = "d420ba7c45ec4dd89608c1900acca0cc";
 
         internal const string FreeInBody = "2008109ff09c4f8aa94ac06a56e0c74c";
         internal const string FreeInBodyAbility = "e41bebb834cf4552a972f9c818d746d0";
@@ -447,6 +448,9 @@
 
         #region Homebrew
         internal const string MythicAwesomeDisplay = "99903520f75241beb88d932a13432720";
+        internal const string ForceOfPersonality = "572d32ba01a24cb28ba827b7e58fb817";
+        internal const string ExtraMesmeristTrick = "96c1cf866a104852a206a72039986bff";
+        internal const string ExtraBoldStare = "9e2438552b504fb488788947caeed429";
         #endregion
 
         #region Layer3Experimental

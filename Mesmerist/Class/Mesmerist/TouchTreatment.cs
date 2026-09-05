@@ -34,7 +34,7 @@ namespace Mesmerist.Class.Mesmerist
                 .CopyFrom(AbilityRefs.LayOnHandsSelf, componentTypes)
                 .SetDisplayName("TouchTreatmentSelf.Name")
                 .SetDescription("TouchTreatmentSelf.Description")
-                .SetIcon(AbilityRefs.LayOnHandsSelf.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("TouchTreatment", AbilityRefs.LayOnHandsSelf.Reference.Get().Icon))
                 .SetRange(AbilityRange.Personal)
                 .SetActionType(CommandType.Swift)
                 .SetAnimation(Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch)
@@ -112,7 +112,7 @@ namespace Mesmerist.Class.Mesmerist
             FeatureConfigurator.New(FeatName, Guids.TouchTreatment)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(FeatureRefs.LayOnHandsFeature.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("TouchTreatment", FeatureRefs.LayOnHandsFeature.Reference.Get().Icon))
                 .AddFacts(new() { TTAbilitySelf, TTAbilityOther })
                 .SetIsClassFeature()
                 .Configure();

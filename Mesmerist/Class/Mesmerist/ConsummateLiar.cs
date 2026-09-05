@@ -25,7 +25,7 @@ namespace Mesmerist.Class.Mesmerist.Mesmerist
             BlueprintFeature consummateLiar = FeatureConfigurator.New(FeatName, Guids.ConsummateLiar)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(FeatureRefs.Deceitful.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("ConsummateLiar", FeatureRefs.Deceitful.Reference.Get().Icon))
                 .SetIsClassFeature()
                 .AddReplaceStatForPrerequisites(StatType.Charisma, StatType.Intelligence)
                 .AddContextStatBonus(stat: StatType.CheckBluff, value: new Kingmaker.UnitLogic.Mechanics.ContextValue()

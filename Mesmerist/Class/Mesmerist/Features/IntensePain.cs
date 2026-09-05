@@ -1,4 +1,5 @@
 ﻿using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+using BlueprintCore.Blueprints.References;
 using Mesmerist.Utils;
 using Kingmaker.Blueprints.Classes;
 
@@ -31,6 +32,7 @@ namespace Mesmerist.Class.Mesmerist.Features
             FeatureConfigurator.New(FeatName, Guids.IntensePain, [FeatureGroup.CombatFeat, FeatureGroup.Feat])
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
+                .SetIcon(IconLoader.GetOr("IntensePain", AbilityRefs.EyebiteAbility.Reference.Get().Icon))
                 .SetIsClassFeature(true)
                 .SetReapplyOnLevelUp(false)
                 .AddFeatureOnApply(Guids.IntensePainProgression)

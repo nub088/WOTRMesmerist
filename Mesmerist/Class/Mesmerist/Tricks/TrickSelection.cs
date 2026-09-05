@@ -1,6 +1,8 @@
 ﻿using BlueprintCore.Blueprints.CustomConfigurators.Classes.Selection;
 using BlueprintCore.Blueprints.References;
 using Mesmerist.Utils;
+using BlueprintCore.Utils;
+using Kingmaker.Blueprints;
 
 namespace Mesmerist.Class.Mesmerist.Tricks
 {
@@ -9,6 +11,18 @@ namespace Mesmerist.Class.Mesmerist.Tricks
         private static readonly string FeatName = "MesmeristTricks";
         internal const string DisplayName = "MesmeristTrick.Name";
         private static readonly string Description = "MesmeristTrick.Description";
+
+        /// <summary>
+        /// Every trick a mesmerist may choose. Shared with ExtraMesmeristTrick so the feat and
+        /// the class feature cannot offer different lists.
+        /// </summary>
+        internal static readonly Blueprint<BlueprintFeatureReference>[] All = [
+            Guids.FalseFlanker, Guids.MeekFacade, Guids.MesmericPantomime, Guids.MesmericMirror, Guids.PsychosomaticSurge, Guids.VoiceOfReason,
+            Guids.SeeInDarkness, Guids.UnwittingMessanger, Guids.FearsomeGuise, Guids.SlipBonds, Guids.VanishArrow, Guids.FreeInBody, Guids.ShadowBlend, Guids.ConcealingVeil,
+            Guids.ForcedHope, Guids.LinkedReaction, Guids.FleetInShadows, Guids.AstoundingAvoidance, Guids.ReflectFear, Guids.ShadowSplinter, Guids.SpectralSmoke,
+            // EXPERIMENTAL (strip with the block above):
+            Guids.CompelAlacrity, Guids.LevitationBuffer, Guids.Misdirection, Guids.CursedSanction,
+            Guids.GiftOfWill, Guids.UmbralShield, Guids.VisionOfBlood, Guids.FakedDeath];
         public static void Configure()
         {
             AstoundingAvoidance.Configure();
@@ -47,14 +61,9 @@ namespace Mesmerist.Class.Mesmerist.Tricks
             FeatureSelectionConfigurator.New(FeatName + "Selection", Guids.MesmeristTrickSelection)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(FeatureRefs.ArcanistExploits.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("TrickSelection", FeatureRefs.ArcanistExploits.Reference.Get().Icon))
                 .SetIsClassFeature()
-                .AddToAllFeatures([Guids.FalseFlanker, Guids.MeekFacade, Guids.MesmericPantomime, Guids.MesmericMirror, Guids.PsychosomaticSurge, Guids.VoiceOfReason,
-                Guids.SeeInDarkness, Guids.UnwittingMessanger, Guids.FearsomeGuise, Guids.SlipBonds, Guids.VanishArrow, Guids.FreeInBody, Guids.ShadowBlend, Guids.ConcealingVeil,
-                Guids.ForcedHope, Guids.LinkedReaction, Guids.FleetInShadows, Guids.AstoundingAvoidance, Guids.ReflectFear, Guids.ShadowSplinter, Guids.SpectralSmoke,
-                // EXPERIMENTAL (strip with the block above):
-                Guids.CompelAlacrity, Guids.LevitationBuffer, Guids.Misdirection, Guids.CursedSanction,
-                Guids.GiftOfWill, Guids.UmbralShield, Guids.VisionOfBlood, Guids.FakedDeath])
+                .AddToAllFeatures(All)
                 /*.AddToAllFeatures([Guids.AstoundingAvoidance, Guids.CompelAlacrity, Guids.FalseFlanker,
                  Guids.FleetInShadows, Guids.LevitationBuffer,
                 Guids.LinkedReaction, MesmericMirror,

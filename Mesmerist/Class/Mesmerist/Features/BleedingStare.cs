@@ -24,7 +24,7 @@ namespace Mesmerist.Class.Mesmerist.Features
                 .AddUniqueBuff()
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(BuffRefs.Bleed1d6Buff.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("BleedingStare", BuffRefs.Bleed1d6Buff.Reference.Get().Icon))
                 .Configure();
 
             BuffConfigurator.New(FeatName + "Buff", Guids.BleedingStareBuff)
@@ -35,7 +35,7 @@ namespace Mesmerist.Class.Mesmerist.Features
             ActivatableAbilityConfigurator.New(FeatName + "ActivatableAbility", Guids.BleedingStareActivatableAbility)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.FalseLifeGreater.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("BleedingStare", AbilityRefs.FalseLifeGreater.Reference.Get().Icon))
                 .SetGroup((ActivatableAbilityGroup)(ExtentedActivatableAbilityGroup)1818)
                 .SetBuff(Guids.BleedingStareBuff)
                 .SetDeactivateImmediately()

@@ -1,0 +1,16 @@
+<Project>
+	<!-- Merges BlueprintCore into Mesmerist.dll so the mod ships as a single assembly.
+	     Lives in its own file because ILRepack.Lib.MSBuild.Task defines a default
+	     "ILRepack" target (merging every dll in the output dir) unless this file exists. -->
+	<Target Name="MergeBlueprintCore" AfterTargets="Build">
+		<ItemGroup>
+			<MergeInputs Include="$(OutputPath)$(AssemblyName).dll" />
+			<MergeInputs Include="$(OutputPath)BlueprintCore.dll" />
+		</ItemGroup>
+		<Message Text="Merging: @(MergeInputs)" Importance="High" />
+		<ILRepack TargetKind="Dll" Parallel="true" DebugInfo="false"
+		          InputAssemblies="@(MergeInputs)"
+		          LibraryPath="$(OutputPath)"
+		          OutputFile="$(OutputPath)$(AssemblyName).dll" />
+	</Target>
+</Project>

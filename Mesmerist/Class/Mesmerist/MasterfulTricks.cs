@@ -20,6 +20,7 @@ namespace Mesmerist.Class.Mesmerist.Mesmerist
             FeatureConfigurator.New(FeatName, Guids.MasterfulTricks)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
+                .SetIcon(IconLoader.GetOr("MasterfulTricks", FeatureRefs.ArcanistExploits.Reference.Get().Icon))
                 .SetIsClassFeature()
                 .Configure();
         }

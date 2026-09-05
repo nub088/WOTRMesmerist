@@ -61,6 +61,9 @@ public static class Main {
                 ExcoriatingStare.Configure();
                 FatiguingStare.Configure();
                 IntensePain.Configure();
+                ForceOfPersonality.Configure();
+                ExtraMesmeristTrick.Configure();
+                ExtraBoldStare.Configure();
                 MythicAwesomeDisplay.Configure();
 
                 //MediumClass.Configure();

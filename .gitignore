@@ -398,3 +398,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /GamePath.props
+
+# Icon generator masters (78 MB of 1024px PNGs; shipped 128px icons live in Mesmerist/Assets/Icons)
+tools/icon_masters/

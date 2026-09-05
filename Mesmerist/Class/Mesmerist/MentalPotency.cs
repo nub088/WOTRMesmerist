@@ -24,7 +24,7 @@ namespace Mesmerist.Class.Mesmerist.Mesmerist
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .SetIsClassFeature()
-                .SetIcon(AbilityRefs.PowerWordBlind.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("MentalPotency", AbilityRefs.PowerWordBlind.Reference.Get().Icon))
                 .SetRanks(4)
                 .Configure();
 

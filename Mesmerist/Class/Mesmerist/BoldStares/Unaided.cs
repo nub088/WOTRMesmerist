@@ -1,6 +1,7 @@
-using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+﻿using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
+using Kingmaker.UnitLogic.FactLogic;
 using Mesmerist.Utils;
 
 namespace Mesmerist.Class.Mesmerist.BoldStares
@@ -13,22 +14,18 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
 
         public static void Configure()
         {
-            // CANDIDATE: AddCannotBeFlanked covers "cannot receive flanking". The
-            // "cannot grant flanking" direction may need a custom component; if the
-            // builder lacks AddCannotBeFlanked, fall back to AddFacts of the game's
-            // "cannot be flanked" feature. // TODO(verify-on-build)
             BuffConfigurator.New(FeatName + "Buff", Guids.UnaidedBuff)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .AddUniqueBuff()
-                .SetIcon(BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon)
-                .AddCannotBeFlanked()
+                .SetIcon(IconLoader.GetOr("Unaided", BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon))
+                .AddMechanicsFeature(AddMechanicsFeature.MechanicsFeatureType.CannotBeFlanked)
                 .Configure();
 
             FeatureConfigurator.New(FeatName, Guids.Unaided)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.TrueSeeing.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Unaided", AbilityRefs.TrueSeeing.Reference.Get().Icon))
                 .SetIsClassFeature()
                 .Configure();
         }

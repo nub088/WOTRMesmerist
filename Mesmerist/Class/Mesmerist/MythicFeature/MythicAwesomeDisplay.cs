@@ -17,7 +17,7 @@ namespace Mesmerist.Class.Mesmerist.MythicFeature
             FeatureConfigurator.New(FeatName, Guids.MythicAwesomeDisplay, FeatureGroup.MythicAbility)
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
-                .SetIcon(AbilityRefs.Starlight.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("MythicAwesomeDisplay", AbilityRefs.Starlight.Reference.Get().Icon))
                 .Configure();
         }
     }

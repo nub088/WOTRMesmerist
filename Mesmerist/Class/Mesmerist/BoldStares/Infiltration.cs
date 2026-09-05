@@ -21,7 +21,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .AddUniqueBuff()
-                .SetIcon(BuffRefs.RazmiryInfiltratorMaskBuff15.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Infiltration", BuffRefs.RazmiryInfiltratorMaskBuff15.Reference.Get().Icon))
                 .AddContextStatBonus(StatType.AdditionalCMD, ContextValues.Rank(), ModifierDescriptor.UntypedStackable, 2, -1)
                 .AddContextStatBonus(StatType.SkillPerception, ContextValues.Rank(), ModifierDescriptor.UntypedStackable, 2, -1)
                 .AddContextRankConfig(ContextRankConfigs.CharacterLevel(AbilityRankType.Default).WithCustomProgression((7, 2), (19, 3), (20, 5)))
@@ -32,7 +32,7 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetDisplayName(DisplayName)
                 .SetDescription(Description)
                 .SetIsClassFeature()
-                .SetIcon(AbilityRefs.TrueSeeing.Reference.Get().Icon)
+                .SetIcon(IconLoader.GetOr("Infiltration", AbilityRefs.TrueSeeing.Reference.Get().Icon))
                 .Configure();
 
 
