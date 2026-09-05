@@ -102,6 +102,16 @@
         internal const string ManifoldStare9th = "eb7927420bf5449a9a23c3a800f3cf23";
         internal const string ManifoldStare15th = "ea384c5a35054fcba5b38185404b1909";
 
+        // --- Layer 2 bold stares (added) ---
+        internal const string Allure = "a104069a4138466ea64b34b15b37a0cb";
+        internal const string AllureBuff = "c22d0d27c3fc4cd0ac933f363cfe6ed0";
+        internal const string Sensed = "8053a176b89b46dcb6463e8d87ad4c61";
+        internal const string SensedBuff = "0bdf94fed89a41f5a170246ab7ad71c7";
+        internal const string Oscillation = "63070ed584b74c8d8c39cc8b0ddb356a";
+        internal const string OscillationBuff = "28be789e15c042fe8b34382691bfcd5f";
+        internal const string Susceptibility = "9d4a5740fcbd459091ee48f6c1169895";
+        internal const string SusceptibilityBuff = "a3d86c8f9e8448a29e52fd3cdb00a2c2";
+
         internal const string TrickVariants = "e32b6e42e9cc4d0c8c7f5665c149a259";
         internal const string TrickVariantsActivatableAbility = "5134abc90d444ad1959891a1627eaeb7";
 
@@ -437,6 +447,25 @@
 
         #region Homebrew
         internal const string MythicAwesomeDisplay = "99903520f75241beb88d932a13432720";
+        #endregion
+
+        #region Layer3Experimental
+        // Experimental Layer-3 tricks. Strip by deleting this region + the matching
+        // EXPERIMENTAL blocks in TrickSelection.cs and CommonTrickHelpers.cs.
+        internal const string GiftOfWill = "445a19b78a464d4fbbf96a239df464b9";
+        internal const string GiftOfWillAbility = "4e19c89dedcb48fc976dbc48faf07422";
+        internal const string GiftOfWillBuff = "ba50cfc619624b7581c6d2a177227bd8";
+        internal const string UmbralShield = "7691f24adf244513bf8d65adf900d5d0";
+        internal const string UmbralShieldAbility = "9adfbbfd102649f08c060f563e3fb851";
+        internal const string UmbralShieldBuff = "bc34345188994b078ae902f4f557f57a";
+        internal const string VisionOfBlood = "b9787690000e4882a85e403aea5b0656";
+        internal const string VisionOfBloodAbility = "887cec662acd48aeb76d20ace8a47abd";
+        internal const string VisionOfBloodBuff = "6a9e41f582564819b32cec4d0e460027";
+        internal const string VisionOfBloodDebuff = "823d81191249438a97c69fc5b1e0c718";
+        internal const string FakedDeath = "84b5b43f326d41e882999dc27cb8edaf";
+        internal const string FakedDeathAbility = "ee50cbbc01be436baef99de6a5367440";
+        internal const string FakedDeathBuff = "2e28fe2316b44bddb381448beef0d53a";
+        internal const string FakedDeathInvisBuff = "c2d34986c5ca4bdbafc25e464c18bafc";
         #endregion
 
     }
