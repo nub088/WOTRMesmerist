@@ -59,16 +59,17 @@ namespace Mesmerist.Class.Mesmerist.Archetypes.VexingDaredevil
                 .AddEntry(15, Guids.BoldStareSelection)
                 .AddEntry(19, Guids.BoldStareSelection);
 
+            // Passing Guids.Mesmerist here already registers this archetype on the class
+            // (ArchetypeConfigurator.OnConfigureCompleted calls
+            // CharacterClassConfigurator.For(Clazz).AddToArchetypes(...) itself); a second,
+            // explicit AddToArchetypes call here previously duplicated the entry, showing the
+            // archetype twice at character creation.
             ArchetypeConfigurator.New(ArchetypeName, Guids.VexingDaredevil, Guids.Mesmerist)
                 .SetLocalizedName(DisplayName)
                 .SetLocalizedDescription(Description)
                 .SetIcon(IconLoader.GetOr("VexingDaredevil", AbilityRefs.EyebiteAbility.Reference.Get().Icon))
                 .SetAddFeatures(addFeatures)
                 .SetRemoveFeatures(removeFeatures)
-                .Configure();
-
-            CharacterClassConfigurator.For(Guids.Mesmerist)
-                .AddToArchetypes(Guids.VexingDaredevil)
                 .Configure();
         }
     }
