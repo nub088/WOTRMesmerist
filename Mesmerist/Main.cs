@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.JsonSystem;
 using Mesmerist.Class.Mesmerist.Features;
 using Mesmerist.Class.Mesmerist.MythicFeature;
 using Mesmerist.Class.Mesmerist;
+using Mesmerist.Class.Mesmerist.Archetypes.VexingDaredevil;
 using Mesmerist.Class.Medium;
 
 namespace Mesmerist;
@@ -55,6 +56,7 @@ public static class Main {
                 log.Log("Patching blueprints.");
                 // Insert your mod's patching methods here
                 MesmeristClass.Configure();
+                VexingDaredevilArchetype.Configure();
                 //BleedingStare.Configure();
                 //CompoundedPain.Configure();
                 DemoralizingStare.Configure();
@@ -67,7 +69,7 @@ public static class Main {
                 MythicAwesomeDisplay.Configure();
 
                 //MediumClass.Configure();
-                
+
             } catch (Exception e) {
                 log.Log(string.Concat("Failed to initialize.", e));
             }

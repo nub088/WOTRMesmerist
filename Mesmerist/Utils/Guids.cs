@@ -274,6 +274,17 @@
         internal const string SurpriseStrikeAbility = "d5f7a0e441d84d8a8e8db7fdf8e0da7a";
         internal const string SurpriseStrikeBuff = "3ee0ddbd940f416e89d1650199c6b049";
 
+        // Vanilla blueprint reused as-is for Martial Weapon Proficiency (1st level): the game's
+        // own "pick one martial weapon and gain proficiency" selection
+        // (BlueprintCore.Blueprints.References.WeaponTypeRefs.MartialWeaponProficencySelection,
+        // spelling and all). Not one of our own GUIDs, kept here only so the archetype's
+        // LevelEntryBuilder can reference it as a plain string like everything else.
+        internal const string MartialWeaponProficiencySelection = "9f76cf2bb8fa466ea04b7523aea99e9a";
+
+        // Bonus feats (replace Touch Treatment at 3rd/6th/10th).
+        internal const string ImprovedFeint = "24708ee37ec64e329c129ee4bfb61855";
+        internal const string GreaterFeint = "9c0e1632c5d34e4e80c56def7cc3d3f2";
+        internal const string GreaterMesmerizingFeint = "df92c52b6d484bea8c06db7cd4cd5c4f";
         #endregion
         #region VexingTrickster
         internal const string VexingTrickster = "5e6334ebfbd34f809613b75fd0ca034e";

@@ -253,6 +253,47 @@ FULL = {
     "MythicAwesomeDisplay":
         "a violet starfield orrery bursting open in a dazzling cosmic display, "
         "wheeling constellations, awe",
+
+    # Vexing Daredevil (archetype)
+    "VexingDaredevil":
+        "a violet rapier crossed with a wide unblinking eye, reckless swordplay "
+        "married to hypnotic focus, dueling stance",
+    "ImprovedFeint":
+        "a violet blade feinting low while a shadow doppelganger strikes high, "
+        "misdirected thrust, deceptive footwork",
+    "GreaterFeint":
+        "a violet blade leaving a lingering afterimage that pins an off balance "
+        "silhouette, sustained opening, trailing light",
+    "GreaterMesmerizingFeint":
+        "a violet eye staring through a cracked animalistic mask mid feint, "
+        "mind over instinct, hypnotic override",
+    "DazzlingFeint":
+        "a violet eye behind a starburst of dazzling light along a blade's edge, "
+        "blinding riposte, radiant glare",
+    "BlindingStrike":
+        "a violet blade trailing a blinding starburst flash into an eye shaped "
+        "silhouette, searing glare, sudden light",
+    "CombatManeuver":
+        "a violet blade hooking an off balance silhouette off its feet, "
+        "exploited opening, controlled leverage",
+    "CriticalStrike":
+        "a violet blade driving into a fracturing weak point of light, precise "
+        "follow-up, shattering impact",
+    "Outmanuever":
+        "a violet blurred footstep trail circling past a startled silhouette, "
+        "swift repositioning, evasive arc",
+    "PiercingStrike":
+        "a violet blade piercing through a cracked psychic eye shaped ward, "
+        "deepened wound, splintering light",
+    "SloppyDefense":
+        "a violet shield splintering open before an oncoming blade, exposed "
+        "guard, crumbling defense",
+    "SurpriseStrike":
+        "two violet blade strikes in rapid succession trailing one motion blur, "
+        "unseen follow-up, sudden second cut",
+    "ShimmeringBody":
+        "a violet silhouette dissolving into shimmering duplicate afterimages, "
+        "blurred outline, wavering light",
 }
 
 ALL = {**PILOT, **FULL}

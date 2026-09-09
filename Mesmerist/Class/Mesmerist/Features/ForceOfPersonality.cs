@@ -37,11 +37,11 @@ namespace Mesmerist.Class.Mesmerist.Features
                 .AddPrerequisiteStatValue(StatType.Charisma, 13)
                 .Configure();
 
-            // FeatureGroup.Feat alone only tags the feature; BasicFeatSelection carries an
-            // explicit list, so the feat has to be added to it to appear at level up.
-            FeatureSelectionConfigurator.For(FeatureSelectionRefs.BasicFeatSelection)
-                .AddToAllFeatures(Guids.ForceOfPersonality)
-                .Configure();
+            // No explicit BasicFeatSelection registration here on purpose. Creating the feature
+            // with FeatureGroup.Feat already puts it in that selection; adding it again by hand
+            // is what produced two Force of Personality entries at level up. The two Extra*
+            // feats still register explicitly because they are built with
+            // FeatureSelectionConfigurator, which does not do this.
         }
     }
 }

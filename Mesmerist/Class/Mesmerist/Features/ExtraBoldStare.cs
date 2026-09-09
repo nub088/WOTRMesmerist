@@ -29,7 +29,12 @@ namespace Mesmerist.Class.Mesmerist.Features
                 .SetRanks(5)
                 .Configure();
 
+            // Remove-then-add keeps this idempotent. AddToAllFeatures appends without checking
+            // for an existing entry, so if Configure runs a second time against the same
+            // in-memory blueprint - a UMM reload, or the mod toggled off and on - the feat is
+            // appended twice and shows up twice at level up until the game restarts.
             FeatureSelectionConfigurator.For(FeatureSelectionRefs.BasicFeatSelection)
+                .RemoveFromAllFeatures(Guids.ExtraBoldStare)
                 .AddToAllFeatures(Guids.ExtraBoldStare)
                 .Configure();
         }
