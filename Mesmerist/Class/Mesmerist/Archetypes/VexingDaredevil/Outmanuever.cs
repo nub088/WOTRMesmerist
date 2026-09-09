@@ -6,12 +6,14 @@ using BlueprintCore.Blueprints.References;
 using BlueprintCore.Conditions.Builder;
 using BlueprintCore.Utils;
 using BlueprintCore.Utils.Types;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.NewActions;
+using Mesmerist.NewConditions;
 using Mesmerist.Utils;
 
 namespace Mesmerist.Class.Mesmerist.Archetypes.VexingDaredevil
