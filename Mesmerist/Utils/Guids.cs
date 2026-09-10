@@ -107,10 +107,10 @@
         internal const string AllureBuff = "c22d0d27c3fc4cd0ac933f363cfe6ed0";
         internal const string Sensed = "8053a176b89b46dcb6463e8d87ad4c61";
         internal const string SensedBuff = "0bdf94fed89a41f5a170246ab7ad71c7";
-        internal const string Oscillation = "63070ed584b74c8d8c39cc8b0ddb356a";
-        internal const string OscillationBuff = "28be789e15c042fe8b34382691bfcd5f";
-        internal const string Susceptibility = "9d4a5740fcbd459091ee48f6c1169895";
-        internal const string SusceptibilityBuff = "a3d86c8f9e8448a29e52fd3cdb00a2c2";
+        // Retired: Oscillation (63070ed584b74c8d8c39cc8b0ddb356a / 28be789e15c042fe8b34382691bfcd5f)
+        // and Susceptibility (9d4a5740fcbd459091ee48f6c1169895 / a3d86c8f9e8448a29e52fd3cdb00a2c2).
+        // Their real effects were not expressible and the stand-ins duplicated Disorientation and
+        // Infiltration. Do not reuse these GUIDs - old saves may still reference them.
 
         internal const string TrickVariants = "e32b6e42e9cc4d0c8c7f5665c149a259";
         internal const string TrickVariantsActivatableAbility = "5134abc90d444ad1959891a1627eaeb7";

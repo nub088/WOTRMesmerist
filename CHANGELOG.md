@@ -23,9 +23,13 @@ Fleet in Shadows, Astounding Avoidance, Reflect Fear, Shadow Splinter,
 Spectral Smoke, Gift of Will, Umbral Shield, Faked Death, Compel Alacrity,
 Levitation Buffer, Misdirection, Cursed Sanction, Vision of Blood.
 
-## New bold stares (experimental unless noted)
+## New bold stares
 
-Unaided, Allure, Sensed, Oscillation, Susceptibility.
+Unaided, Allure, Sensed.
+
+Oscillation and Susceptibility were prototyped and then dropped: their tabletop
+effects (distance-gated concealment, social skill penalties) have no engine
+hook, and the stand-ins just duplicated Disorientation and Infiltration.
 
 ## New feats
 
