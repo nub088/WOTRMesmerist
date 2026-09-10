@@ -29,6 +29,9 @@ namespace Mesmerist.Class.Mesmerist.Archetypes.VexingDaredevil
             ImprovedFeint.Configure();
             GreaterFeint.Configure();
             GreaterMesmerizingFeint.Configure();
+            // After the three feint feats (it appends onto ImprovedFeint) and before the picks
+            // (they gate on FeintedBuff, which this creates).
+            Feint.Configure();
             DazzlingFeint.Configure();
             ShimmeringBody.Configure();
 

@@ -45,10 +45,15 @@ namespace Mesmerist.Class.Mesmerist.Archetypes.VexingDaredevil
                 .AddTargetAttackWithWeaponTrigger(
                     onlyHit: true,
                     actionOnSelf: ActionsBuilder.New().Conditional(
-                        ConditionsBuilder.New().Add<ContextConditionInitiatorHasFact>(c =>
-                        {
-                            c.FactToCheck = BlueprintTool.GetRef<BlueprintUnitFactReference>(Guids.PiercingStrike);
-                        }),
+                        ConditionsBuilder.New()
+                            .Add<ContextConditionInitiatorHasFact>(c =>
+                            {
+                                c.FactToCheck = BlueprintTool.GetRef<BlueprintUnitFactReference>(Guids.PiercingStrike);
+                            })
+                            .Add<ContextConditionOwnerHasBuffFromCaster>(c =>
+                            {
+                                c.Buff = BlueprintTool.GetRef<BlueprintBuffReference>(Guids.FeintedBuff);
+                            }),
                         ifTrue: ActionsBuilder.New().DealDamage(
                             new DamageTypeDescription() { Type = DamageType.Direct },
                             new ContextDiceValue()

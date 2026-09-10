@@ -51,10 +51,15 @@ namespace Mesmerist.Class.Mesmerist.Archetypes.VexingDaredevil
                 .AddTargetAttackWithWeaponTrigger(
                     onlyHit: true,
                     actionsOnAttacker: ActionsBuilder.New().Conditional(
-                        ConditionsBuilder.New().Add<ContextConditionInitiatorHasFact>(c =>
-                        {
-                            c.FactToCheck = BlueprintTool.GetRef<BlueprintUnitFactReference>(Guids.Outmanuever);
-                        }),
+                        ConditionsBuilder.New()
+                            .Add<ContextConditionInitiatorHasFact>(c =>
+                            {
+                                c.FactToCheck = BlueprintTool.GetRef<BlueprintUnitFactReference>(Guids.Outmanuever);
+                            })
+                            .Add<ContextConditionOwnerHasBuffFromCaster>(c =>
+                            {
+                                c.Buff = BlueprintTool.GetRef<BlueprintBuffReference>(Guids.FeintedBuff);
+                            }),
                         ifTrue: ActionsBuilder.New().ApplyBuff(
                             Guids.OutmanueverBuffEffect,
                             ContextDuration.Fixed(1, DurationRate.Rounds))))

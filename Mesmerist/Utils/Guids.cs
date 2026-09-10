@@ -282,6 +282,7 @@
         internal const string MartialWeaponProficiencySelection = "9f76cf2bb8fa466ea04b7523aea99e9a";
 
         // Bonus feats (replace Touch Treatment at 3rd/6th/10th).
+        internal const string FeintedBuff = "b7c4e0a91f3d4a5f8e2c6d0b93a71f45";
         internal const string ImprovedFeint = "24708ee37ec64e329c129ee4bfb61855";
         internal const string GreaterFeint = "9c0e1632c5d34e4e80c56def7cc3d3f2";
         internal const string GreaterMesmerizingFeint = "df92c52b6d484bea8c06db7cd4cd5c4f";

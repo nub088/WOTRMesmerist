@@ -7,9 +7,9 @@ namespace Mesmerist.Class.Mesmerist.Archetypes.VexingDaredevil
     /// <summary>
     /// Vexing Daredevil's Dazzling Feint: picked at 3rd level and again every 4 levels
     /// thereafter (mirrors Bold Stare's own cadence), replacing bold stare entirely. Each pick
-    /// hooks an on-hit effect onto the shared HypnoticStareBuff - see BlindingStrike.cs for the
-    /// approximation this whole set shares (fires on every hit against a stared target, rather
-    /// than only after a successful feint).
+    /// hooks an on-hit effect onto the shared HypnoticStareBuff, gated on a successful feint
+    /// against that target (see Feint.cs) - matching tabletop's "each time she successfully
+    /// feints against a creature under her hypnotic stare."
     /// </summary>
     public class DazzlingFeint
     {

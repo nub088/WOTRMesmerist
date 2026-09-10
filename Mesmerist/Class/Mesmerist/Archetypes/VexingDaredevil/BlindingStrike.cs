@@ -22,11 +22,12 @@ namespace Mesmerist.Class.Mesmerist.Archetypes.VexingDaredevil
     /// emits a bright flash of light into the opponent's eyes. If the vexing daredevil's next
     /// attack hits, the target must succeed at a Fortitude save or be blinded for 1 round."
     ///
-    /// Deviation: rather than a one-shot "next attack after a successful feint," this fires
-    /// every time the daredevil hits a creature under her hypnotic stare, since the engine has
-    /// no clean hook into the tabletop feint check itself. Hooked onto the shared
-    /// HypnoticStareBuff (see HypnoticStare.cs), matching how Painful Stare's own on-hit
-    /// trigger is wired.
+    /// Hooked onto the shared HypnoticStareBuff (see HypnoticStare.cs), matching how Painful
+    /// Stare's own on-hit trigger is wired, and gated on the target carrying this daredevil's
+    /// FeintedBuff, so it fires only after a successful feint - see Feint.cs for the check.
+    ///
+    /// Remaining deviation: tabletop arms one specific "next attack," whereas the feint debuff
+    /// lasts a round here, so every hit inside that round benefits.
     /// </summary>
     internal class BlindingStrike
     {
@@ -54,10 +55,15 @@ namespace Mesmerist.Class.Mesmerist.Archetypes.VexingDaredevil
                 .AddTargetAttackWithWeaponTrigger(
                     onlyHit: true,
                     actionOnSelf: ActionsBuilder.New().Conditional(
-                        ConditionsBuilder.New().Add<ContextConditionInitiatorHasFact>(c =>
-                        {
-                            c.FactToCheck = BlueprintTool.GetRef<BlueprintUnitFactReference>(Guids.BlindingStrike);
-                        }),
+                        ConditionsBuilder.New()
+                            .Add<ContextConditionInitiatorHasFact>(c =>
+                            {
+                                c.FactToCheck = BlueprintTool.GetRef<BlueprintUnitFactReference>(Guids.BlindingStrike);
+                            })
+                            .Add<ContextConditionOwnerHasBuffFromCaster>(c =>
+                            {
+                                c.Buff = BlueprintTool.GetRef<BlueprintBuffReference>(Guids.FeintedBuff);
+                            }),
                         ifTrue: ActionsBuilder.New().SavingThrow(
                             type: SavingThrowType.Fortitude,
                             onResult: ActionsBuilder.New().ConditionalSaved(

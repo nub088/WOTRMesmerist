@@ -13,9 +13,13 @@ Everything below is new since that point.
 - Dazzling Feint and its 7 sub-options (Blinding Strike, Combat Maneuver,
   Critical Strike, Outmaneuver, Piercing Strike, Sloppy Defense, Surprise
   Strike), plus Improved/Greater/Greater Mesmerizing Feint bonus feats.
-- Some effects are approximated where the engine has no clean hook for the
-  tabletop trigger (e.g. Dazzling Feint fires off hits against a
-  hypnotically-stared target rather than a true "successful feint" check).
+- EXPERIMENTAL, unverified in a live game: Dazzling Feint now runs a real
+  feint check (Persuasion vs. the target's feint DC, charged as a move
+  action) before an attack against a hypnotically-stared target, gating the
+  7 sub-options on that success rather than firing on every hit. Ships with
+  debug logging and an untested assumption about move-action timing in
+  real-time-with-pause - see the comments in Feint.cs and
+  ContextActionFeintCheck.cs before relying on it.
 
 ## New mesmerist tricks (experimental unless noted)
 
