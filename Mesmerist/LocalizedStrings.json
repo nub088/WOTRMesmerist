@@ -114,7 +114,7 @@
     },
     {
         "Key": "Lethality.Description",
-        "enGB": "The hypnotic stare penalty also applies to the target’s Fortitude saves."
+        "enGB": "The hypnotic stare penalty also applies to the target’s Fortitude saves against poison and disease."
     },
     {
         "Key": "Nightmare.Name",
