@@ -65,7 +65,13 @@ namespace Mesmerist.Class.Mesmerist
                 .SetRanks(4)
                 .SetIsClassFeature(true)
                 .AddContextRankConfig(ContextRankConfigs.FeatureRank(Guids.PainfulStare, type: AbilityRankType.Default))
-                .AddNewRoundTrigger(newRoundActions: ActionsBuilder.New().Add<ContextActionOnEnemiesWithFact>(c =>
+                // AddFactContextActions rather than AddNewRoundTrigger: NewRoundTrigger listens
+                // for IUnitNewCombatRoundHandler, raised only by TurnBased.Controllers.
+                // TurnController, which exists only while Turn-Based Mode is on - so the ranks
+                // were never re-applied during real-time-with-pause play. ITickEachRound (what
+                // AddFactContextActions uses) is driven by UnitTicksController's 6-second timer
+                // in real time and by TurnController in turn-based, so it fires in both.
+                .AddFactContextActions(newRound: ActionsBuilder.New().Add<ContextActionOnEnemiesWithFact>(c =>
                 {
                     c.FactToCheck = BlueprintTool.GetRef<BlueprintUnitFactReference>(Guids.HypnoticStareBuff);
                     c.Action = ActionsList;
