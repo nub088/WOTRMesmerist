@@ -1,4 +1,5 @@
-﻿using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+﻿using System.Collections.Generic;
+using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using BlueprintCore.Blueprints.References;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using Mesmerist.Utils;
@@ -35,74 +36,47 @@ namespace Mesmerist.Class.Mesmerist.BoldStares
                 .SetIcon(IconLoader.GetOr("PsychicInception", BuffRefs.DebilitatingInjuryDisorientedEffectBuff.Reference.Get().Icon))
                 .Configure();
 
-            /*.AddAbilityTargetHasNoFactUnless(
-                checkedFacts: [FeatureRefs.AnimalType.Reference.Get(), FeatureRefs.VerminType.Reference.Get(), FeatureRefs.MagicalBeastType.Reference.Get()],
-                unlessFact: BlueprintTool.GetRef<BlueprintUnitFactReference>(Guids.PsychicInception))*/
-            AbilityConfigurator.For(AbilityRefs.Daze)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
+            // --- FIX 2: gate the target-restriction bypass behind Psychic Inception (1e RAW) ---
+            // 1e RAW only waives immunity to mind-affecting effects granted by creature
+            // type - it does not let the mesmerist ignore a spell's own target-type
+            // restriction (e.g. Hold Person still requires a humanoid target). Vanilla
+            // enforces that restriction on these spells with AbilityTargetHasNoFactUnless
+            // (blocking Animal/Vermin/Magical Beast targets). The RemoveComponents call
+            // below used to strip that restriction unconditionally, which let every
+            // caster in the game - not just mesmerists with this bold stare - target
+            // these spells at animals/vermin/magical beasts. Swapping in our own copy of
+            // the same restriction, gated on the PsychicInception fact via unlessFact,
+            // keeps the restriction intact for everyone else while letting a mesmerist
+            // with this bold stare bypass it - matching the commented-out approach this
+            // replaces.
+            //
+            // To revert to the previous (unconditional) behavior, delete the
+            // .AddAbilityTargetHasNoFactUnless(...) call in the loop below and leave only
+            // the .RemoveComponents(...) call.
+            List<Blueprint<BlueprintUnitFactReference>> lowIntTypes = new()
+            {
+                FeatureRefs.AnimalType.Cast<BlueprintUnitFactReference>(),
+                FeatureRefs.VerminType.Cast<BlueprintUnitFactReference>(),
+                FeatureRefs.MagicalBeastType.Cast<BlueprintUnitFactReference>(),
+            };
+            Blueprint<BlueprintUnitFactReference> psychicInceptionFact = BlueprintTool.GetRef<BlueprintUnitFactReference>(Guids.PsychicInception);
 
-            AbilityConfigurator.For(AbilityRefs.CauseFear)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.Doom)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.CommandApproach)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.CommandFall)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.CommandFlee)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.CommandHalt)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.Castigate)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.HideousLaughter)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.HoldPerson)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.PhantasmalKiller)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.ConstrictingCoils)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.DominatePerson)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.HoldMonster)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.CommandGreaterApproach)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.CommandGreaterFall)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.CommandGreaterFlee)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.CommandGreaterHalt)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.HoldPersonMass)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.PowerWordKill)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.DominateMonster)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
-
-            AbilityConfigurator.For(AbilityRefs.Insanity)
-                .RemoveComponents(c => c is AbilityTargetHasNoFactUnless).Configure();
+            foreach (var ability in new[]
+            {
+                AbilityRefs.Daze, AbilityRefs.CauseFear, AbilityRefs.Doom,
+                AbilityRefs.CommandApproach, AbilityRefs.CommandFall, AbilityRefs.CommandFlee, AbilityRefs.CommandHalt,
+                AbilityRefs.Castigate, AbilityRefs.HideousLaughter, AbilityRefs.HoldPerson, AbilityRefs.PhantasmalKiller,
+                AbilityRefs.ConstrictingCoils, AbilityRefs.DominatePerson, AbilityRefs.HoldMonster,
+                AbilityRefs.CommandGreaterApproach, AbilityRefs.CommandGreaterFall, AbilityRefs.CommandGreaterFlee, AbilityRefs.CommandGreaterHalt,
+                AbilityRefs.HoldPersonMass, AbilityRefs.PowerWordKill, AbilityRefs.DominateMonster, AbilityRefs.Insanity,
+            })
+            {
+                AbilityConfigurator.For(ability)
+                    .RemoveComponents(c => c is AbilityTargetHasNoFactUnless)
+                    .AddAbilityTargetHasNoFactUnless(checkedFacts: lowIntTypes, unlessFact: psychicInceptionFact)
+                    .Configure();
+            }
+            // --- end FIX 2 -----------------------------------------------------------
         }
     }
 }
