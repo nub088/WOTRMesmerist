@@ -3,6 +3,7 @@ using BlueprintCore.Blueprints.References;
 using BlueprintCore.Utils.Types;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 using Mesmerist.Utils;
 
 namespace Mesmerist.Class.Mesmerist.Tricks
@@ -22,6 +23,10 @@ namespace Mesmerist.Class.Mesmerist.Tricks
 
             BuffConfigurator.For(Guids.GiftOfWillBuff)
                 .AddContextStatBonus(StatType.SaveWill, ContextValues.Rank(), ModifierDescriptor.Competence)
+                // Tabletop grants the target the mesmerist's own Will save bonus, which
+                // includes Towering Ego (Cha bonus on Will saves); mirror that piece here
+                // since Towering Ego is an automatic class feature (see Mesmerist.cs).
+                .AddContextStatBonus(StatType.SaveWill, ContextValues.Property(UnitProperty.StatBonusCharisma, toCaster: true), ModifierDescriptor.UntypedStackable)
                 .AddContextRankConfig(ContextRankConfigs.ClassLevel([Guids.Mesmerist], type: AbilityRankType.Default).WithCustomProgression((4, 2), (9, 3), (14, 4), (19, 5), (20, 6)))
                 .Configure();
         }
