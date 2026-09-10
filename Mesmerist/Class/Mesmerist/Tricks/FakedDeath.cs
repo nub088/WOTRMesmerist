@@ -18,10 +18,14 @@ namespace Mesmerist.Class.Mesmerist.Tricks
                                                     Guids.FakedDeathAbility,
                                                     Guids.FakedDeathBuff);
 
-            // CANDIDATE: BuffRefs.InvisibilityBuff. If the ref name differs, use the
-            // game's invisibility buff blueprint. // TODO(verify-on-build)
+            // doNotRestoreMissingFacts matters here. The vanilla invisibility buff removes
+            // itself when its holder takes an offensive action (Kingmaker.Designers.Mechanics.
+            // Buffs.BuffInvisibility.HandleUnitMakeOffensiveAction), which is the behaviour we
+            // want - but AddFacts.UpdateFacts re-adds any of its facts that have gone missing
+            // when a save is loaded, so without this flag a save/load after breaking the
+            // invisibility would hand it straight back for the rest of the duration.
             BuffConfigurator.For(Guids.FakedDeathBuff)
-                .AddFacts(new() { BuffRefs.InvisibilityBuff.Reference.Get() })
+                .AddFacts(new() { BuffRefs.InvisibilityBuff.Reference.Get() }, doNotRestoreMissingFacts: true)
                 .Configure();
         }
     }
