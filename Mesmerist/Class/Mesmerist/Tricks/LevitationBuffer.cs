@@ -19,7 +19,8 @@ namespace Mesmerist.Class.Mesmerist.Tricks
         // onto - but ContextActionPush is the engine's real forced-movement action (the same
         // one bull rush uses), so the shove itself is expressible. Implemented as an ability
         // the implanted trick grants to its subject: a burst around the subject that pushes
-        // every enemy caught in it away, without provoking on the way out.
+        // every enemy caught in it away, without provoking on the way out. Using it discharges
+        // the trick, per the general mesmerist trick rule.
         private const float BurstRadiusFeet = 10f;
         private const int PushDistanceFeet = 5;
 
@@ -48,7 +49,13 @@ namespace Mesmerist.Class.Mesmerist.Tricks
                 .AddAbilityEffectRunAction(
                     ActionsBuilder.New()
                         .Push(distance: ContextValues.Constant(PushDistanceFeet),
-                              provokeAttackOfOpportunity: false))
+                              provokeAttackOfOpportunity: false)
+                        // A mesmerist trick is discharged the moment it is triggered, so using
+                        // this spends the implanted buff. AbilityTargetsAround is the ability's
+                        // target selector and yields enemies only (AbilityExecutionProcess never
+                        // applies the effect to the caster in that case), hence toCaster - and
+                        // the repeat calls, one per enemy caught in the burst, are no-ops.
+                        .RemoveBuff(Guids.LevitationBufferBuff, toCaster: true))
                 .Configure();
 
             BuffConfigurator.For(Guids.LevitationBufferBuff)

@@ -1,4 +1,6 @@
-﻿using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
+﻿using BlueprintCore.Actions.Builder;
+using BlueprintCore.Actions.Builder.ContextEx;
+using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
 using BlueprintCore.Utils.Types;
@@ -17,11 +19,9 @@ namespace Mesmerist.Class.Mesmerist.Tricks
         // dimension door granted by the implanted buff - a teleport provokes nothing, which
         // is the whole point of the trick.
         //
-        // Deviations from tabletop, both forced by the engine:
-        //  - Distance is flat (the level 20 maximum) rather than scaling with mesmerist
-        //    level. CustomRange is a static blueprint field and cannot read caster level.
-        //  - Usable while the trick remains implanted rather than exactly once. The move
-        //    action cost keeps this in line with simply walking the same distance.
+        // Deviation from tabletop, forced by the engine: distance is flat (the level 20
+        // maximum) rather than scaling with mesmerist level. CustomRange is a static blueprint
+        // field and cannot read caster level.
         private const float RangeFeet = 30f;
 
         public static void Configure()
@@ -52,6 +52,13 @@ namespace Mesmerist.Class.Mesmerist.Tricks
                 .SetCanTargetEnemies(false)
                 .SetShouldTurnToTarget(true)
                 .SetNotOffensive(true)
+                // A mesmerist trick is discharged the moment it is triggered, so one blink
+                // spends the implanted buff. AbilityCustomDimensionDoor is AbilityCustomLogic,
+                // not an AbilityDeliverEffect, so AbilityExecutionProcess still applies the
+                // ability's AbilityApplyEffect to the clicked target - which here is a point,
+                // hence toCaster.
+                .AddAbilityEffectRunAction(
+                    ActionsBuilder.New().RemoveBuff(Guids.CompelAlacrityBuff, toCaster: true))
                 .Configure();
 
             BuffConfigurator.For(Guids.CompelAlacrityBuff)
