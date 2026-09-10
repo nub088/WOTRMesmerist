@@ -476,7 +476,9 @@
         internal const string VisionOfBlood = "b9787690000e4882a85e403aea5b0656";
         internal const string VisionOfBloodAbility = "887cec662acd48aeb76d20ace8a47abd";
         internal const string VisionOfBloodBuff = "6a9e41f582564819b32cec4d0e460027";
-        internal const string VisionOfBloodDebuff = "823d81191249438a97c69fc5b1e0c718";
+        // Retired: VisionOfBloodDebuff (823d81191249438a97c69fc5b1e0c718) was a wrapper buff
+        // whose only content was AddFacts(BuffRefs.Stunned); the trigger now applies the
+        // vanilla Stunned buff directly. Do not reuse this GUID.
         internal const string FakedDeath = "84b5b43f326d41e882999dc27cb8edaf";
         internal const string FakedDeathAbility = "ee50cbbc01be436baef99de6a5367440";
         internal const string FakedDeathBuff = "2e28fe2316b44bddb381448beef0d53a";

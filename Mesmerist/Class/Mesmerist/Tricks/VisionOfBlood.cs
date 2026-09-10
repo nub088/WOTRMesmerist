@@ -15,13 +15,6 @@ namespace Mesmerist.Class.Mesmerist.Tricks
         // must make a Will save or be stunned for 1 round. The trick is spent when it fires.
         public static void Configure()
         {
-            BuffConfigurator.New("VisionOfBloodStun", Guids.VisionOfBloodDebuff)
-                .SetDisplayName("VisionOfBlood.Name")
-                .SetDescription("VisionOfBlood.Description")
-                .SetIcon(IconLoader.GetOr("VisionOfBlood", AbilityRefs.Eyebite.Reference.Get().Icon))
-                .AddFacts(new() { BuffRefs.Stunned.Reference.Get() })
-                .Configure();
-
             CommonTrickHelpers.CreateMasterfulTrick("VisionOfBlood",
                                                     "VisionOfBlood.Name",
                                                     "VisionOfBlood.Description",
@@ -36,7 +29,11 @@ namespace Mesmerist.Class.Mesmerist.Tricks
             BuffConfigurator.For(Guids.VisionOfBloodBuff)
                 .AddContextCalculateAbilityParamsBasedOnClass(
                     characterClass: Guids.Mesmerist, statType: StatType.Charisma)
+                // onlyHit: false because the trigger is the attack, not a hit - the tabletop
+                // trick fires (and is discharged) when the subject is attacked, whether or not
+                // the blow lands.
                 .AddTargetAttackWithWeaponTrigger(
+                    onlyHit: false,
                     actionOnSelf: ActionsBuilder.New().RemoveSelf(),
                     actionsOnAttacker: ActionsBuilder.New()
                         .SavingThrow(
@@ -44,7 +41,7 @@ namespace Mesmerist.Class.Mesmerist.Tricks
                             onResult: ActionsBuilder.New()
                                 .ConditionalSaved(
                                     failed: ActionsBuilder.New()
-                                        .ApplyBuff(Guids.VisionOfBloodDebuff,
+                                        .ApplyBuff(BuffRefs.Stunned.Reference.Get(),
                                                    ContextDuration.Fixed(1, DurationRate.Rounds)),
                                     succeed: ActionsBuilder.New())))
                 .Configure();

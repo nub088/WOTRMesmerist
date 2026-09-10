@@ -40,9 +40,12 @@ namespace Mesmerist.Class.Mesmerist.Tricks
             // actionOnSelf against the buff's own holder, so the sanction lands on the attacker
             // and the trick removes itself - a mesmerist trick is spent once it triggers.
             // The rank config feeds ContextValues.Rank() for the 1 min/level duration.
+            // onlyHit: false because the trigger is the attack, not a hit - the tabletop trick
+            // fires (and is discharged) when the subject is attacked, whether or not it lands.
             BuffConfigurator.For(Guids.CursedSanctionBuff)
                 .AddContextRankConfig(ContextRankConfigs.ClassLevel([Guids.Mesmerist], type: AbilityRankType.Default))
                 .AddTargetAttackWithWeaponTrigger(
+                    onlyHit: false,
                     actionOnSelf: ActionsBuilder.New().RemoveSelf(),
                     actionsOnAttacker: ActionsBuilder.New()
                         .ApplyBuff(Guids.CursedSanctionDebuffEffect,
