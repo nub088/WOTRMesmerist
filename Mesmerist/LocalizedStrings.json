@@ -424,7 +424,7 @@
     { "Key": "SpectralSmoke.Name", "ProcessTemplates": false, "enGB": "Spectral Smoke" },
     { "Key": "SpectralSmoke.Description", "enGB": "For 1 minute per mesmerist level, illusory smoke wreaths the subject, granting concealment (20% miss chance)." },
     { "Key": "Unaided.Name", "ProcessTemplates": false, "enGB": "Unaided" },
-    { "Key": "Unaided.Description", "enGB": "The target of the hypnotic stare cannot grant or receive flanking bonuses." },
+    { "Key": "Unaided.Description", "enGB": "The target of the hypnotic stare gains no help from its allies, taking the hypnotic stare penalty to its Armor Class." },
     { "Key": "Allure.Name", "ProcessTemplates": false, "enGB": "Allure" },
     { "Key": "Allure.Description", "enGB": "The hypnotic stare penalty also applies to the target's initiative and Perception checks." },
     { "Key": "Sensed.Name", "ProcessTemplates": false, "enGB": "Sensed" },
